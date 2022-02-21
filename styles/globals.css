@@ -1,9 +1,373 @@
-html,
-body {
+* {
   padding: 0;
   margin: 0;
+  -webkit-box-sizing: border-box; /* Safari, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
+  text-decoration: none;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
+.wrapper {
+  padding: 15px;
+}
+
+.button {
+  font-size: 16px;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: black;
+  white-space: nowrap;
+}
+.button:hover {
+  background-color: #385898;
+  color: white;
+}
+
+.preserveBreak {
+  white-space: pre-line; /* preserve line break */
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.maxWidth {
+  max-width: 800px;
+}
+#post-form {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#post-form #add-post {
+  font-size: large;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 3px 15px;
+  border: 1px solid lightgrey;
+}
+#post-form #add-post:hover {
+  background-color: lightgrey;
+}
+
+#post-form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+#post-form-title {
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+  border: 1px solid lightgrey;
+  border-bottom: none;
+  border-radius: 5px;
+}
+
+#post-form-ta {
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 5px 10px;
+  resize: none;
+  height: 100px;
+  border: 1px solid lightgrey;
+}
+
+#post-form-btn-con {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+#post-form-btn-con button {
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+}
+#post-form-btn-con button:hover {
+  background-color: rgba(6, 206, 6, 0.671);
+}
+
+#post-form-error {
+  position: absolute;
+  left: 0;
+  font-size: 15px;
+}
+
+.checkEmailForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkEmailForm .btn-con {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: center;
+}
+
+.checkEmailForm input {
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+  border: 1px solid lightgrey;
+  border-bottom: none;
+  border-radius: 5px;
+}
+
+.checkEmailForm button {
+  width: 80px;
+  text-align: center;
+}
+
+.checkEmailForm button:not(:last-child) {
+  margin-right: 5px;
+}
+
+.postContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 30px;
+  width: 100%;
+}
+.eachPost {
+  padding: 10px;
+  background-color: lightyellow;
+
+  margin-bottom: 15px;
+
+  width: 100%;
+}
+.eachPost button {
+  margin-top: 5px;
+}
+
+#each-post-title {
+  font-size: 30px;
+  font-weight: 800px;
+}
+
+#each-post-name-con {
+  font-size: 15px;
+  color: grey;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  animation-name: delay;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+}
+
+#each-post-content-con {
+  background-color: rgba(235, 235, 22, 0.212);
+  margin: 10px 10px 0 10px;
+  padding: 10px;
+  font-size: 20px;
+  animation-name: delay;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+}
+
+.comment-con {
+  padding: 10px;
+  width: 100%;
+}
+
+.comment-con #comment-section {
+  font-size: 16px;
+  color: grey;
+  font-weight: bolder;
+  cursor: pointer;
+  display: inline;
+  padding: 5px;
+}
+.comment-con #comment-section:hover {
+  background-color: darkgrey;
+  color: white;
+}
+
+.comment-con .eachComment:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.eachComment {
+  padding: 10px;
+  background-color: rgba(235, 235, 22, 0.212);
+}
+
+.comment-name-con {
+  display: flex;
+  color: grey;
+  font-size: 16px;
+}
+
+.comment-name-con p {
+  margin-right: 5px;
+}
+.comment-content-con {
+  margin-left: 10px;
+}
+
+.commentForm {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.commentForm textarea {
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 80%;
+  height: 50px;
+  border: 1px solid lightgrey;
+  margin-right: 5px;
+}
+
+.date {
+  margin-right: 10px;
+  margin-left: auto;
+  font-size: 14px;
+}
+
+#add-btn-con {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Nav */
+nav {
+  padding: 0.5rem;
+  display: flex;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 5;
+}
+
+#github img {
+  height: 26px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#logo {
+  white-space: nowrap;
+  margin-right: 30px;
+  margin-left: 15px;
+  color: black;
+  font-size: 40px;
+  font-weight: 700;
+}
+.nav-list li {
+  cursor: pointer;
+  margin-right: 5px;
+}
+.nav-list li a {
+  border-radius: 5px;
+  white-space: nowrap;
+}
+.nav-list li a:not(#logo) {
+  text-align: center;
+  display: block;
+  width: 90px;
+  padding: 10px;
+  font-size: 20px;
+  color: black;
+}
+.nav-list li a:not(#logo):not(.active):hover {
+  background-color: lightgrey;
+}
+.nav-list .active {
+  background-color: #385898;
+  color: white !important;
+}
+
+#nav-login {
+  flex-grow: 5;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu-icon {
+  display: none;
+  margin-left: auto;
+  margin-right: 0;
+  font-size: 40px;
+}
+/* END Nav */
+
+/* Login */
+#login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+  padding: 15px;
+}
+#login input:not(#login-submit) {
+  width: 200px;
+  padding: 5px;
+  font-size: 15px;
+  text-align: center;
+  border: 1px solid lightgrey;
+
+  border-radius: 5px;
+}
+#login input:not(:last-child) {
+  margin-bottom: 5px;
+}
+#login input {
+  padding: 3px;
+}
+
+/* End Login*/
+
+/* Review Post */
+span#add-review-post {
+  background-color: lightgreen;
+  border-radius: 5px;
+  padding: 3px;
+}
+#add-review-post {
+  position: relative;
+  top: 15px;
+}
+/* End Review Post */
+
+@media screen and (max-width: 600px) {
+  .nav-list {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    top: 50px;
+    right: 0;
+    background-color: lightblue;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: none;
+    z-index: 3;
+  }
+
+  .menu-icon {
+    display: block;
+  }
 }

@@ -1,0 +1,13 @@
+/* SCROLLBAR */
+.port-screen::-webkit-scrollbar {
+  width: 0.5em; /* width of the entire scrollbar */
+}
+
+.port-screen::-webkit-scrollbar-track {
+  background: white; /* color of the tracking area */
+}
+
+.port-screen::-webkit-scrollbar-thumb {
+  background-color: gray; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+}
