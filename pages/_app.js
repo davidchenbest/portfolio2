@@ -5,9 +5,13 @@ import '../styles/patternBackground.css'
 import '../styles/gallery.css'
 import '../styles/navigator.css'
 import '../styles/photosCon.css'
+import Nav from '../components/nav'
 
 function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
-  return <Component {...pageProps} />
+  return (<>
+    <Nav />
+    <Component {...pageProps} />
+  </>)
 }
 
 export default MyApp
