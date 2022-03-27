@@ -1,0 +1,58 @@
+.photosCon {
+  animation-name: delay;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+  justify-content: center;
+  padding: 1em;
+}
+
+.photosCon #editIcon {
+  padding: 0.25em;
+  position: absolute;
+  top: 0.25em;
+  right: 0.25em;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.photosCon #editIcon:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.photosCon .eachPhoto {
+  position: relative;
+}
+
+.galleryPhoto {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+@media (max-width: 1435px) {
+  .photosCon {
+    grid-template-columns: auto auto auto;
+  }
+}
+
+@media (max-width: 1085px) {
+  .photosCon {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media (max-width: 735px) {
+  .photosCon {
+    grid-template-columns: auto;
+  }
+  .galleryPhoto {
+    width: 325px;
+    height: 325px;
+  }
+}
