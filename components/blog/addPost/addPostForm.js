@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import PostForm from './postForm'
 import CheckEmail from './checkEmail'
 import ReviewScreen from './reviewScreen'
-import { addReviewPost } from '../../queries/queries'
-import fetchGraphQL from '../../modules/fetchGraphQL'
-
-
+import { addReviewPost } from '../../../queries/queries'
+import fetchGraphQL from '../../../modules/fetchGraphQL'
 
 class AddPostForm extends Component {
     constructor() {
@@ -43,9 +41,6 @@ class AddPostForm extends Component {
     }
 
     goBack = () => {
-
-
-
         this.setState({ submit: false })
     }
 
@@ -98,7 +93,4 @@ class AddPostForm extends Component {
         );
     }
 }
-
-
-
 export default AddPostForm;

@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-const LIMIT = 400
+const LIMIT = process.env.BLOG_WORD_LIMIT
 function underLimit(str) {
     if (str.length > LIMIT) return false
 
