@@ -31,6 +31,7 @@
   padding: 0.1em;
   font-weight: bold;
   border-radius: 50%;
+  z-index: 5;
 }
 
 #exit:hover,
