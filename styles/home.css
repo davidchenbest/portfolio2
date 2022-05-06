@@ -1,266 +1,257 @@
 #pfp {
-    height: 150px;
-    max-width: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-right: 30px;
-    padding: 3px;
-    border: 1px solid #c1c1c1;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-  
-  .techDes {
-    color: grey;
-    font-size: 16px;
-    line-height: 1.5em;
-  }
-  
-  .techDes img {
-    opacity: 0.6;
-  }
-  
-  h2,
-  h3 {
-    line-height: 1.5em;
-  }
-  p,
-  a {
-    line-height: 1.8;
-  }
-  
-  #port-img {
-    max-width: 100%;
-  
-    object-fit: cover;
-    cursor: pointer;
-  }
-  
-  .otherProject {
-    border: 1px solid lightgrey;
-    border-radius: 5px;
-    padding: 1em;
-    margin: 1em 0;
-    display: block;
-  }
-  .otherProject:hover {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-  #gitIcon {
-    height: 1.2em;
-    margin: 0 1em;
-    opacity: 0.6;
-  }
-  
+  height: 150px;
+  max-width: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 30px;
+  padding: 3px;
+  border: 1px solid #c1c1c1;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.techDes {
+  color: grey;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+.techDes img {
+  opacity: 0.6;
+}
+
+h2,
+h3 {
+  line-height: 1.5em;
+}
+
+p,
+a {
+  line-height: 1.8;
+}
+
+#port-img {
+  max-width: 100%;
+
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.otherProject {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 1em;
+  margin: 1em 0;
+  display: block;
+}
+
+.otherProject:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#gitIcon {
+  height: 1.2em;
+  margin: 0 1em;
+  opacity: 0.6;
+}
+
+.port-screen {
+  display: grid;
+  column-gap: 1em;
+  padding: 2em 1.5em;
+  grid-template-columns: 1fr 1.2fr;
+  color: white;
+  top: 0;
+  width: 90vw;
+  height: 100vh;
+  background-color: #555555;
+  box-shadow: 0px 0px 300px 5px rgb(60, 60, 60);
+  position: fixed;
+  z-index: 3;
+  overflow-y: auto;
+}
+
+.port-screen .summary {
+  background-color: white;
+  padding: 1em;
+  border-radius: 5px;
+  color: black;
+  text-align: left;
+}
+
+.port-screen .button {
+  background-color: lightgrey;
+  color: black;
+}
+
+.port-screen .button:hover {
+  color: white;
+  background-color: #385898;
+}
+
+.port-screen-exit {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  position: fixed;
+}
+
+#screen-img {
+  background-color: hotpink;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#screen-img:hover {
+  border: 1px solid lightgrey;
+}
+
+.screen-title {
+  margin-bottom: 30px;
+}
+
+.exit-screen {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  padding: 6px 12px;
+}
+
+.exit-screen:hover {
+  background-color: red;
+}
+
+.portSelect {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+
+.portSelect .img-section {
+  padding: 3px;
+  padding-bottom: 15px;
+  margin: 15px;
+  border: 1px solid #c1c1c1;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.portSection .img-section {
+  max-width: 400px;
+}
+
+.img-section h3 {
+  margin: 10px 0;
+}
+
+.img-section p {
+  max-width: 100%;
+}
+
+.portfolioContainer {
+  width: 100%;
+  text-align: center;
+}
+
+.portfolioContainer .button {
+  margin-top: 50px;
+  display: inline-block;
+  border-radius: 5px;
+  border: 1px solid navy;
+}
+
+.portfolioContainer p,
+a {
+  font-size: 18px;
+}
+
+.landing-content {
+  padding: 70px 15px;
+  /* background-image: linear-gradient(#eaeaea, white); */
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  widows: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-content .img-con {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.landing-content #name {
+  white-space: nowrap;
+  font-size: 60px;
+}
+
+.landing-content p {
+  font-size: 20px;
+}
+
+.landing-content span {
+  margin-bottom: 15px;
+}
+
+.landing-content .description {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.second-title {
+  margin-bottom: 15px;
+}
+
+.portSection {
+  margin-top: 40px;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.portSection p {
+  max-width: 800px;
+  margin-bottom: 10px;
+}
+
+.grid-con {
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  text-align: left;
+  padding: 0 30px;
+  display: grid;
+  grid-template-columns: auto;
+  gap: 15px;
+  margin-bottom: 80px;
+}
+
+.other-projects {
+  padding: 15px;
+  justify-content: center;
+}
+
+.more-about {
+  padding: 15px;
+  max-width: 850px;
+}
+
+@media screen and (max-width: 600px) {
   .port-screen {
-    display: grid;
-    column-gap: 1em;
-    padding: 2em 1.5em;
-    grid-template-columns: 1fr 1.2fr;
-    color: white;
-    top: 0;
-    width: 90vw;
-    height: 100vh;
-    background-color: #555555;
-    box-shadow: 0px 0px 300px 5px rgb(60, 60, 60);
-    position: fixed;
-    z-index: 3;
-    overflow-y: auto;
-  }
-  .port-screen .summary {
-    background-color: white;
-    padding: 1em;
-    border-radius: 5px;
-    color: black;
-    text-align: left;
-  }
-  
-  .port-screen .button {
-    background-color: lightgrey;
-    color: black;
-  }
-  .port-screen .button:hover {
-    color: white;
-    background-color: #385898;
-  }
-  
-  .port-screen-exit {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    right: 0;
-    position: fixed;
-  }
-  
-  #screen-img {
-    background-color: hotpink;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  #screen-img:hover {
-    border: 1px solid lightgrey;
-  }
-  
-  .screen-title {
-    margin-bottom: 30px;
-  }
-  
-  .exit-screen {
-    cursor: pointer;
-    position: absolute;
-    right: 0;
-    padding: 6px 12px;
-  }
-  
-  .exit-screen:hover {
-    background-color: red;
-  }
-  
-  .portSelect {
-    display: flex;
-    flex-wrap: wrap;
-  
-    justify-content: center;
-  }
-  
-  .portSelect .img-section {
-    padding: 3px;
-    padding-bottom: 15px;
-    margin: 15px;
-    border: 1px solid #c1c1c1;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-  
-  .portSection .img-section {
-    max-width: 400px;
-  }
-  
-  .img-section h3 {
-    margin: 10px 0;
-  }
-  .img-section p {
-    max-width: 100%;
-  }
-  
-  .portfolioContainer {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .portfolioContainer .button {
-    margin-top: 50px;
-    display: inline-block;
-    border-radius: 5px;
-    border: 1px solid navy;
-  }
-  
-  .portfolioContainer p,
-  a {
-    font-size: 18px;
-  }
-  
-  .landing-content {
-    padding: 70px 15px;
-    /* background-image: linear-gradient(#eaeaea, white); */
-    flex-direction: column;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    widows: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .landing-content .img-con {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-  }
-  
-  .landing-content #name {
-    white-space: nowrap;
-    font-size: 60px;
-  }
-  
-  .landing-content p {
-    font-size: 20px;
-  }
-  
-  .landing-content span {
-    margin-bottom: 15px;
-  }
-  
-  .landing-content .description {
-    font-size: 14px;
-    font-style: italic;
-  }
-  
-  .title {
-    text-align: center;
-    margin-bottom: 15px;
-  }
-  
-  .second-title {
-    margin-bottom: 15px;
-  }
-  
-  .portSection {
-    margin-top: 40px;
-    margin-bottom: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .portSection p {
-    max-width: 800px;
-    margin-bottom: 10px;
-  }
-  .badge {
-    border-radius: 5px;
-    display: inline-block;
-    padding: 15px;
-  }
-  
-  .badge div {
-    margin: 5px;
-  }
-  .badge span {
-    display: inline-block;
-    background-color: #888;
-    padding: 3px;
-    margin: 2px;
-    border-radius: 5px;
-    color: white;
-  }
-  
-  .grid-con {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .grid {
-    text-align: left;
-    padding: 0 30px;
-    display: grid;
     grid-template-columns: auto;
-    gap: 15px;
-    margin-bottom: 80px;
   }
-  .other-projects {
-    padding: 15px;
-    justify-content: center;
-  }
-  
-  .more-about {
-    padding: 15px;
-    max-width: 850px;
-  }
-  
-  @media screen and (max-width: 600px) {
-    .port-screen {
-      grid-template-columns: auto;
-    }
-  }
-  
+}
