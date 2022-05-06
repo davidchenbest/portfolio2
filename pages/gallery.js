@@ -1,13 +1,12 @@
 import Gallery from "../components/gallery/Gallery"
 import MongoConnection from "../lib/mongoConnection"
-import Head from 'next/head'
+import Headers from "../components/Headers"
+
 
 export default function GalleryPage({ data }) {
     return (
         <>
-            <Head>
-                <title>Gallery by {process.env.TITLE_NAME}</title>
-            </Head>
+            <Headers name='gallery' />
             <Gallery data={data} />
         </>
     )

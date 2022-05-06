@@ -2,13 +2,11 @@ import AddPostForm from '../components/blog/addPost/AddPostForm'
 import PostContainer from '../components/blog/displayPost/postContainer'
 import { postsQuery } from "../queries/queries";
 import fetchGraphQL from "../modules/fetchGraphQL";
-import Head from 'next/head'
+import Headers from '../components/Headers';
 
 export default function BlogPage({ data }) {
     return <>
-        <Head>
-            <title>Blog by {process.env.TITLE_NAME}</title>
-        </Head>
+        <Headers name='blog' />
         <AddPostForm />
         <PostContainer data={data} />
     </>

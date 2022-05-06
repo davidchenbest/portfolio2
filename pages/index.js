@@ -1,12 +1,11 @@
-import Head from 'next/head'
+import Headers from '../components/Headers'
 import PortfolioContainer from '../components/portfolio/portfolioContainer'
+
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>{process.env.TITLE_NAME}</title>
-      </Head>
+      <Headers name='index' />
       <PortfolioContainer />
     </>
   )
