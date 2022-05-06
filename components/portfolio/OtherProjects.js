@@ -3,11 +3,10 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 const projects = [
-    { name: 'Portfolio/Blog/Gallery', link: 'https://jiachen.netlify.com/', gitLink: 'https://github.com/davidchenbest/portfolio' },
+    { name: 'Blog', link: 'https://jiachen.netlify.com/blog', gitLink: 'https://github.com/davidchenbest/portfolio2' },
+    { name: 'Gallery', link: 'https://jiachen.netlify.com/gallery', gitLink: 'https://github.com/davidchenbest/portfolio2' },
+    { name: 'Daily Wallpaper', gitLink: 'https://github.com/davidchenbest/daily-wallpaper' },
     { name: 'Flashcard', link: 'https://flashcard-jia.web.app/', gitLink: 'https://github.com/davidchenbest/flashcards-app' },
-    { name: 'St. John’s Class Search Program', link: 'https://university-search-program.herokuapp.com/', gitLink: 'https://github.com/davidchenbest/university-search-program' },
-    { name: 'Sudoku game', link: 'https://sudoku-jia.web.app/', gitLink: 'https://github.com/davidchenbest/sudoku' },
-    { name: 'Paint app', link: 'https://davidchenbest.github.io/paint-app/index.html', gitLink: 'https://github.com/davidchenbest/paint-app' },
 ]
 
 export default function OtherProjects() {

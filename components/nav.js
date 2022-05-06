@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import ActiveLink from './ActiveLink'
 
 export default function Nav() {
+    const { asPath } = useRouter()
     const [slideMenu, setSlideMenu] = useState(false)
 
     const displayLogout = () => {
@@ -38,8 +41,9 @@ export default function Nav() {
                 </Link>
             </motion.div>
             <ul className='nav-list'>
-                <li><Link href="/blog"><a>Blog</a></Link></li>
-                <li><Link href="/gallery"><a>Gallery</a></Link></li>
+                {asPath !== '/' &&
+                    <><li><ActiveLink href={'/blog'} name='Blog' /></li>
+                        <li><ActiveLink href={'/gallery'} name='Gallery' /></li></>}
                 <li >
                     <Link href='https://drive.google.com/file/d/1GkDC0JBxphOvPf7A27iR5U8qU5E6iuCv/view?usp=sharing'>
                         <a rel="noopener noreferrer" target='_blank' >Resume</a>
@@ -63,6 +67,6 @@ export default function Nav() {
             <span className="material-icons menu-icon" onClick={() => displayMenu()}>&#xe5d2;</span>
 
 
-        </nav>
+        </nav >
     )
 }
