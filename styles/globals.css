@@ -272,7 +272,7 @@ nav {
   top: 0;
   width: 100%;
   background-color: white;
-  z-index: 5;
+  z-index: 2;
 }
 
 #github img {
