@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const { BLOG_WORD_LIMIT } = process.env
+const { BLOG_WORD_LIMIT, TITLE_NAME } = process.env
 
 const nextConfig = {
   reactStrictMode: true,
@@ -8,7 +8,8 @@ const nextConfig = {
     domains: ['lh3.googleusercontent.com']
   },
   env: {
-    BLOG_WORD_LIMIT
+    BLOG_WORD_LIMIT,
+    TITLE_NAME
   }
 }
 

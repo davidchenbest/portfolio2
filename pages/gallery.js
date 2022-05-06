@@ -1,9 +1,15 @@
 import Gallery from "../components/gallery/Gallery"
 import MongoConnection from "../lib/mongoConnection"
+import Head from 'next/head'
 
 export default function GalleryPage({ data }) {
     return (
-        <Gallery data={data} />
+        <>
+            <Head>
+                <title>Gallery by {process.env.TITLE_NAME}</title>
+            </Head>
+            <Gallery data={data} />
+        </>
     )
 }
 
