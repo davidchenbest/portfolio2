@@ -21,7 +21,7 @@ export default function OtherProjects() {
             {projects.map((project, i) => <div className='otherProject' key={i}>
                 {project.link ?
                     <Link href={project.link}>
-                        <a rel="noopener noreferrer" target={!project.link.startsWith('/') && '_blank'} >
+                        <a rel="noopener noreferrer" target={!project.link.startsWith('/') ? '_blank' : null} >
                             <span>{project.name}</span>
                         </a>
                     </Link>
