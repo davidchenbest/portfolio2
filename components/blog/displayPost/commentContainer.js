@@ -11,7 +11,6 @@ const CommentContainer = ({comments})=>{
            {show && 
            comments.map((c,i) =>
            <EachComment key={i} first={c.author.first} last={c.author.first} date={c.date} content={c.content}></EachComment >
-           
             
             
             )}

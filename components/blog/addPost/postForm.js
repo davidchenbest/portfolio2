@@ -23,7 +23,6 @@ class PostForm extends Component {
     }
 
 
-
     render() {
         return (
             <form autoComplete="off">
@@ -37,7 +36,6 @@ class PostForm extends Component {
         );
     }
 }
-
 
 
 export default PostForm;

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 const LIMIT = process.env.BLOG_WORD_LIMIT
 function underLimit(str) {
@@ -30,4 +29,3 @@ export default function EachPostContent({ content }) {
         </div >
     )
 }
-
