@@ -15,7 +15,14 @@ const data = {
         title: `Gallery by ${TITLE_NAME}`,
         description: 'Gallery app for displaying photographic photos.',
         keywords: 'Gallery, Photo, Art',
-    }
+    },
+    'nba scores': {
+        title: `Nba Scores by ${TITLE_NAME}`,
+    },
+    'nba standings': {
+        title: `Nba Standings by ${TITLE_NAME}`,
+    },
+
 }
 
 export default data
