@@ -1,0 +1,63 @@
+.games {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(1, minmax(0, 20rem));
+  gap: 1rem;
+  position: relative;
+}
+
+.games .loadingCon {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.game {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(3, minmax(0, auto));
+  position: relative;
+}
+
+.game:hover {
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}
+
+.game>div {
+  padding: 0.5rem;
+}
+
+.teamCon img {
+  height: 3rem;
+}
+
+.scoreCon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scoreCon .score {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.teamCon {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.teamNameCon {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.record,
+.gameStatus {
+  font-size: 0.6rem;
+}

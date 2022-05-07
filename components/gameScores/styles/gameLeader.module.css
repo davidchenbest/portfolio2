@@ -1,0 +1,19 @@
+.stats {
+    font-size: 0.6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.name {
+    font-size: 0.6rem;
+}
+
+.stat {
+    display: grid;
+    gap: 0.1rem;
+    grid-template-columns: 1fr;
+}
+
+.stat span:first-child {
+    font-size: 0.5rem;
+}

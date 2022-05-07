@@ -1,0 +1,13 @@
+.score {
+    font-size: 0.8rem;
+}
+
+.period {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+}
+
+.period span:first-child {
+    font-size: 0.5rem;
+}

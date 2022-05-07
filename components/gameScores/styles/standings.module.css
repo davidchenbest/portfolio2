@@ -1,0 +1,39 @@
+.standings {
+    display: grid;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.conferenceCon {
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.conferenceCon table {
+    text-align: left;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.playoffCutoff {
+    border-bottom: 2px solid black;
+}
+
+.th {
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.75rem;
+}
+
+.tr {
+    border-bottom: 1px solid lightgray;
+}
+
+.tr:hover {
+    background-color: lightgray;
+}
+
+.td {
+    padding: 0.75rem;
+}
