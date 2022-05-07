@@ -65,7 +65,7 @@ export default function Nav() {
             </ul>
 
 
-            <span className="material-icons menu-icon" onClick={() => displayMenu()}>&#xe5d2;</span>
+            <span className="menu-icon" onClick={() => displayMenu()}>[]</span>
 
 
         </nav >
