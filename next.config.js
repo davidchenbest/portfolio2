@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const { BLOG_WORD_LIMIT, TITLE_NAME } = process.env
+const { BLOG_WORD_LIMIT, TITLE_NAME, IMG_UNOPTIMIZE } = process.env
 
 const nextConfig = {
   reactStrictMode: true,
@@ -9,7 +9,8 @@ const nextConfig = {
   },
   env: {
     BLOG_WORD_LIMIT,
-    TITLE_NAME
+    TITLE_NAME,
+    IMG_UNOPTIMIZE
   }
 }
 

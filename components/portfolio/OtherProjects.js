@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+const { IMG_UNOPTIMIZE } = process.env
 
 const projects = [
     { name: 'Blog', link: '/blog', gitLink: 'https://github.com/davidchenbest/portfolio2' },
@@ -28,7 +29,7 @@ export default function OtherProjects() {
                     : <span>{project.name}</span>
                 }
                 <a rel="noopener noreferrer" target="_blank" href={project.gitLink} id="gitIcon" >
-                    <Image alt='github' height={25} width={25} src={require('../../images/github.png')} />
+                    <Image alt='github' height={25} width={25} src={require('../../images/github.png')} unoptimized={IMG_UNOPTIMIZE} />
                 </a>
             </div>)}
 
