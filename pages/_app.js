@@ -6,10 +6,12 @@ import '../styles/gallery.css'
 import '../styles/navigator.css'
 import '../styles/photosCon.css'
 import Nav from '../components/nav'
+import SubNav from '../components/subNav/SubNav'
 
 function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
   return (<>
     <Nav />
+    <SubNav />
     <Component {...pageProps} />
   </>)
 }
