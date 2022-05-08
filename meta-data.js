@@ -22,6 +22,11 @@ const data = {
     'nba standings': {
         title: `Nba Standings by ${TITLE_NAME}`,
     },
+    'videoroom': {
+        title: `Videoroom by ${TITLE_NAME}`,
+        description: 'Video chat app for connectiong with friend and family.',
+        keywords: 'Videochat, friend, family',
+    },
 
 }
 
