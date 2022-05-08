@@ -1,0 +1,13 @@
+.leaveMessages {
+    position: absolute;
+    right: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.span {
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 0.25rem 0.5rem;
+}

@@ -1,0 +1,35 @@
+.video {
+    border: 1px solid lightgray;
+    width: 100%;
+    border-radius: 5px;
+    padding: 0.25rem;
+}
+
+.peerVideoCon {
+    position: relative;
+    width: 20rem;
+}
+
+.name {
+    top: 0.25rem;
+    left: 0.25rem;
+    background-color: lightgrey;
+    padding: 0.1rem 0.2rem;
+    border-radius: 5px;
+    position: absolute;
+}
+
+.peerVideoCon:hover .peerVideoControls {
+    display: flex;
+}
+
+.peerVideoControls {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+}
