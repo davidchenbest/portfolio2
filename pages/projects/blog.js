@@ -1,8 +1,8 @@
-import AddPostForm from '../components/blog/addPost/AddPostForm'
-import PostContainer from '../components/blog/displayPost/postContainer'
-import { postsQuery } from "../queries/queries";
-import fetchGraphQL from "../modules/fetchGraphQL";
-import Headers from '../components/Headers';
+import AddPostForm from '../../components/blog/addPost/AddPostForm'
+import PostContainer from '../../components/blog/displayPost/postContainer'
+import { postsQuery } from "../../queries/queries";
+import fetchGraphQL from "../../modules/fetchGraphQL";
+import Headers from '../../components/Headers';
 
 export default function BlogPage({ data }) {
     return <>

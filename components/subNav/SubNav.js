@@ -1,7 +1,10 @@
 import { useRouter } from 'next/router'
 import ActiveLink from '../ActiveLink'
 
-const subNav = { '/nba': ['/score', '/standings'] }
+const subNav = {
+    '/nba': ['/score', '/standings'],
+    "/projects": ['/blog', '/gallery', '/videoroom']
+}
 
 function format(url) {
     let name = url.replace(/\//, '')
@@ -13,7 +16,8 @@ export default function SubNav() {
     const { asPath } = useRouter()
     let paths = asPath.split('/')
     paths = paths.slice(0, paths.length - 1)
-    const path = paths.join('/')
+    let path = paths.join('/')
+    if (!path) path = asPath
     const subs = subNav[path]
     return (
         <>

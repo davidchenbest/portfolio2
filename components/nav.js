@@ -42,9 +42,6 @@ export default function Nav() {
                 </Link>
             </motion.div>
             <ul className='nav-list'>
-                {asPath !== '/' &&
-                    <><li><ActiveLink href={'/blog'} name='Blog' /></li>
-                        <li><ActiveLink href={'/gallery'} name='Gallery' /></li></>}
                 <li >
                     <Link href='https://drive.google.com/file/d/1GkDC0JBxphOvPf7A27iR5U8qU5E6iuCv/view?usp=sharing'>
                         <a rel="noopener noreferrer" target='_blank' >Resume</a>

@@ -1,6 +1,6 @@
-import Gallery from "../components/gallery/Gallery"
-import MongoConnection from "../lib/mongoConnection"
-import Headers from "../components/Headers"
+import Gallery from "../../components/gallery/Gallery"
+import MongoConnection from "../../lib/mongoConnection"
+import Headers from "../../components/Headers"
 
 
 export default function GalleryPage({ data }) {
