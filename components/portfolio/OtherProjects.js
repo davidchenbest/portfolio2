@@ -5,8 +5,9 @@ import Link from 'next/link'
 const { IMG_UNOPTIMIZE } = process.env
 
 const projects = [
-    { name: 'Blog', link: '/blog', gitLink: 'https://github.com/davidchenbest/portfolio2' },
-    { name: 'Gallery', link: '/gallery', gitLink: 'https://github.com/davidchenbest/portfolio2' },
+    { name: 'Blog', link: '/blog', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/blog' },
+    { name: 'Gallery', link: '/gallery', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/gallery' },
+    { name: 'Video Chat', link: '/videoroom', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/webrtc' },
     { name: 'Daily Wallpaper', gitLink: 'https://github.com/davidchenbest/daily-wallpaper' },
     { name: 'Flashcard', link: 'https://flashcard-jia.web.app/', gitLink: 'https://github.com/davidchenbest/flashcards-app' },
 ]
