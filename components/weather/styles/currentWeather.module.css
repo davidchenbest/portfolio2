@@ -1,0 +1,51 @@
+.currentWeatherCon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.currentWeatherCon #background {
+  max-width: 100%;
+}
+
+.highLowCon {
+  display: flex;
+  gap: 1rem;
+}
+
+.highLowCon p {
+  padding: 0.5rem;
+  background-color: antiquewhite;
+  padding: 5px;
+}
+
+.iconCon {
+  border-radius: 5px;
+  height: 20rem;
+  background-color: skyblue;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  position: relative;
+}
+
+.weatherImgCon {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.currentTemp {
+  display: flex;
+  align-items: baseline;
+}
+
+.currentTemp h1 {
+  font-size: 5.5rem;
+}

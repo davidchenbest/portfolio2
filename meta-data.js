@@ -24,8 +24,13 @@ const data = {
     },
     'videoroom': {
         title: `Videoroom by ${TITLE_NAME}`,
-        description: 'Video chat app for connectiong with friend and family.',
+        description: 'Video chat app for connecting with friend and family.',
         keywords: 'Videochat, friend, family',
+    },
+    'weather': {
+        title: `Weather by ${TITLE_NAME}`,
+        description: 'Weather app for checking current, hourly, and forecast weather.',
+        keywords: 'weather, forecast',
     },
 
 }
