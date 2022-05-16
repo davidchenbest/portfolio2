@@ -32,6 +32,11 @@ const data = {
         description: 'Weather app for checking current, hourly, and forecast weather.',
         keywords: 'weather, forecast',
     },
+    'sierpinski': {
+        title: `Sierpinski by ${TITLE_NAME}`,
+        description: 'Sierpinski demonstration app for visualizing pattern.',
+        keywords: `sierpinski, triangle`,
+    },
 
 }
 
