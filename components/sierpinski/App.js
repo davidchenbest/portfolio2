@@ -108,22 +108,35 @@ export default function App() {
 
     const setDefaultVertex = () => reset() || setCORDS(SAMPLE_CORDS)
     return <div className={styles.container}>
+        <div className={styles.demo}>
 
-        <span className={styles.canvas}>
-            <Cord cord={mouseCord} point={currentPoint} />
-            <Direction CORDS={CORDS} NUMBER_VERTEX={NUMBER_VERTEX} point={currentPoint} />
-            <canvas onMouseMove={calculateCord} onClick={canvasClick} ref={canvas} width={WIDTH} height={HEIGHT}
-                style={{ border: '1px solid #d3d3d3' }}>
-                Your browser does not support the canvas element.
-            </canvas>
-        </span>
-        <div className={styles.buttons}>
-            {CORDS.length !== NUMBER_VERTEX && <button onClick={setDefaultVertex}>Default vertex</button>}
-            {currentPoint && <>
-                <button onClick={plotRandom}>Plot</button>
-                <HoverButton onClick={automatePlot} name='Automate' text={`automate ${AUTOMATE} points`} />
-                <button onClick={reset}>Reset</button>
-            </>}
+            <span className={styles.canvas}>
+                <Cord cord={mouseCord} point={currentPoint} />
+                <Direction CORDS={CORDS} NUMBER_VERTEX={NUMBER_VERTEX} point={currentPoint} />
+                <canvas onMouseMove={calculateCord} onClick={canvasClick} ref={canvas} width={WIDTH} height={HEIGHT}
+                    style={{ border: '1px solid #d3d3d3' }}>
+                    Your browser does not support the canvas element.
+                </canvas>
+            </span>
+            <div className={styles.buttons}>
+                {CORDS.length !== NUMBER_VERTEX && <button onClick={setDefaultVertex}>Default vertex</button>}
+                {currentPoint && <>
+                    <button onClick={plotRandom}>Plot</button>
+                    <HoverButton onClick={automatePlot} name='Automate' text={`automate ${AUTOMATE} plots`} />
+                    <button onClick={reset}>Reset</button>
+                </>}
+            </div>
+        </div>
+        <div className={styles.about}>
+            <section>
+                <h1>How does Sierpinski&apos;s triangle work?</h1>
+                <p>choose vertices</p>
+                <p>select a <i>random point</i> </p>
+                <p>the first plot is the midpoint between the <i>random point</i>  choosen by user and a random vertex of the choosen vertices</p>
+                <p>the <i>random point</i>  is then updated to position of the midpoint</p>
+                <p>the next plot is the midpoint between the last updated <i>random point</i>  and a random vertex of the choosen vertices</p>
+                <p>after repeating a few thousand plots, the plots will always form a unique pattern</p>
+            </section>
         </div>
     </div>
 }
