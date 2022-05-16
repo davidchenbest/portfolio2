@@ -3,7 +3,9 @@ import ActiveLink from '../ActiveLink'
 
 const subNav = {
     '/nba': ['/score', '/standings'],
-    "/projects": ['/blog', '/gallery', '/videoroom', '/weather']
+    "/projects": ['/blog', '/gallery'],
+    '/tools': [, '/videoroom', '/weather'],
+    '/concepts': [, '/sierpinski']
 }
 
 function format(url) {

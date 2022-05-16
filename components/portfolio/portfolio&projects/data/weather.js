@@ -1,7 +1,7 @@
 const data = {
     meta: {
         title: 'Weather App',
-        description: 'Automotive application design for business to business use', tech: 'React', link: 'https://jiachen.netlify.app/projects/weather'
+        description: 'Automotive application design for business to business use', tech: 'React', link: 'https://jiachen.netlify.app/tools/weather'
     },
     imgs: [{ name: 'Weather1', src: 'weather1.JPG' }, { name: 'Weather2', src: 'weather2.JPG' }],
     githubLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/weather',
