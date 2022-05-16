@@ -153,14 +153,12 @@
   align-items: center;
   padding: 0 30px;
   width: 100%;
+  gap: 5rem
 }
 
 .eachPost {
   padding: 10px;
   background-color: lightyellow;
-
-  margin-bottom: 15px;
-
   width: 100%;
 }
 

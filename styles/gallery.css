@@ -1,31 +1,25 @@
-.galleryCon{
+.galleryCon {
     padding: 1em;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
-    margin-bottom: 5em;
+    gap: 2rem;
 }
 
-.galleryCon h1{
+.galleryCon h1 {
     font-size: 1.5em;
     font-weight: 550;
 }
 
-.folderCon{
+.folderCon {
     padding: 1em;
     width: 100%;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 2em;
 }
 
-
-
-
-.folderTitle{
-    
-}
+.folderTitle {}

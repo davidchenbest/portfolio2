@@ -237,7 +237,6 @@ a {
   display: grid;
   grid-template-columns: auto;
   gap: 15px;
-  margin-bottom: 80px;
 }
 
 .other-projects {
