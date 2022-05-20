@@ -36,15 +36,15 @@ a {
   cursor: pointer;
 }
 
-.otherProject {
+.otherApp {
   border: 1px solid lightgrey;
   border-radius: 5px;
-  padding: 1em;
+  padding: .5em;
   margin: 1em 0;
   display: block;
 }
 
-.otherProject:hover {
+.otherApp:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -239,9 +239,16 @@ a {
   gap: 15px;
 }
 
-.other-projects {
-  padding: 15px;
-  justify-content: center;
+.other-apps {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.other-apps a,
+.other-apps span {
+  font-size: .9rem;
 }
 
 .more-about {
