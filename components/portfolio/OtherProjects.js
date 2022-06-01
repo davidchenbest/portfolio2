@@ -29,7 +29,7 @@ export default function OtherProjects() {
         if (element) element.click()
     }
     return (
-        <>
+        <div>
             <h2 className='second-title'>Other Apps</h2>
             <div className='other-apps' onClick={(e) => otherProject(e)}>
 
@@ -53,6 +53,6 @@ export default function OtherProjects() {
                 </div>)}
 
             </div>
-        </>
+        </div>
     )
 }

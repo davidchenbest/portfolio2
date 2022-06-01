@@ -151,6 +151,9 @@ a {
 .portfolioContainer {
   width: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 }
 
 .portfolioContainer .button {
@@ -214,8 +217,6 @@ a {
 }
 
 .portSection {
-  margin-top: 40px;
-  margin-bottom: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -236,7 +237,7 @@ a {
   padding: 0 30px;
   display: grid;
   grid-template-columns: auto;
-  gap: 15px;
+  gap: 3.5rem;
 }
 
 .other-apps {
@@ -252,7 +253,6 @@ a {
 }
 
 .more-about {
-  padding: 15px;
   max-width: 850px;
 }
 
