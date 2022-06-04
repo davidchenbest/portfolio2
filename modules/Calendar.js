@@ -1,11 +1,11 @@
 const { google } = require('googleapis');
-
+import CREDENTIALS from '../privatekey'
 export default class Calendar {
     constructor(keyPath) {
         if (this.constructor.instance) return this.constructor.instance
         if (!keyPath) throw 'missing keyPath'
         this.auth = new google.auth.GoogleAuth({
-            keyFile: keyPath,
+            credentials: CREDENTIALS,
             scopes: ['https://www.googleapis.com/auth/calendar'],
         });
         this.calendar = google.calendar('v3')
