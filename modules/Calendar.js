@@ -1,9 +1,8 @@
 const { google } = require('googleapis');
 import CREDENTIALS from '../privatekey'
 export default class Calendar {
-    constructor(keyPath) {
+    constructor() {
         if (this.constructor.instance) return this.constructor.instance
-        if (!keyPath) throw 'missing keyPath'
         this.auth = new google.auth.GoogleAuth({
             credentials: CREDENTIALS,
             scopes: ['https://www.googleapis.com/auth/calendar'],
@@ -11,11 +10,12 @@ export default class Calendar {
         this.calendar = google.calendar('v3')
     }
 
-    async listAllEvents(calendarId) {
+    async listAllEvents(calendarId, params = {}) {
         try {
             const { data } = await this.calendar.events.list({
                 auth: this.auth,
-                calendarId
+                calendarId,
+                ...params
             })
             return data
         } catch (error) {
