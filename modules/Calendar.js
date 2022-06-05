@@ -1,5 +1,6 @@
 const { google } = require('googleapis');
-import CREDENTIALS from '../privatekey'
+import { CREDENTIALS } from 'config'
+
 export default class Calendar {
     constructor() {
         if (this.constructor.instance) return this.constructor.instance

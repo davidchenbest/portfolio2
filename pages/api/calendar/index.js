@@ -1,6 +1,7 @@
 import Calendar from "../../../modules/Calendar"
 const keyPath = './privatekey.json'
-const { CALENDAR_ID } = process.env
+import { CALENDAR } from 'config'
+const { MAIN_ID, IDS } = CALENDAR
 const event = {
     "end": {
         "dateTime": "2022-06-04T20:00:00-04:00"
@@ -32,8 +33,8 @@ const event = {
 export default async function handler(req, res) {
     try {
         const calendar = new Calendar(keyPath)
-        if (req.method === 'POST') res.status(200).json({ response: await calendar.createEvent(CALENDAR_ID, event) })
-        res.status(200).json({ response: await calendar.listAllEvents(CALENDAR_ID) })
+        if (req.method === 'POST') res.status(200).json({ response: await calendar.createEvent(MAIN_ID, event) })
+        res.status(200).json({ response: await calendar.listAllEvents(MAIN_ID) })
     } catch (error) {
         console.error(error)
         res.status(200).json('error')
