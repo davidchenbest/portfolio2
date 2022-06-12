@@ -9,7 +9,8 @@ export default async function handler(req, res) {
         const myDate = new MyDate()
         const first = myDate.getFirstDateOfMonth()
         const last = myDate.getLastDateOfMonth()
-        const data = await calendar.listAllEvents(MAIN_ID, { timeMin: first, timeMax: last })
+        const promises = IDS.map(id => calendar.listAllEvents(id, { timeMin: first, timeMax: last }))
+        const data = await Promise.all(promises)
         res.status(200).json(data)
     } catch (error) {
         console.error(error)

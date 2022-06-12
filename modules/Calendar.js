@@ -20,7 +20,8 @@ export default class Calendar {
             })
             return data
         } catch (error) {
-            throw error
+            console.error(error)
+            return
         }
 
     }
