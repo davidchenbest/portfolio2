@@ -26,11 +26,12 @@ export default class Calendar {
 
     }
 
-    async createEvent(calendarId, event) {
+    async createEvent(calendarId, event, auth = this.auth) {
         try {
             const { data } = await this.calendar.events.insert({
-                auth: this.auth,
+                auth,
                 calendarId,
+                conferenceDataVersion: 1,
                 resource: event,
             })
             return data
