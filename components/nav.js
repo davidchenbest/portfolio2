@@ -21,7 +21,7 @@ export default function Nav() {
         //     )
         // }
         return (
-            <li id='nav-login' ><a href='/login'>Login</a></li>
+            <li id='nav-login' ><Link href='/login'><a >Login</a></Link></li>
         )
     }
 
