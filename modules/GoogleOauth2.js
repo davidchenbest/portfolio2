@@ -10,4 +10,10 @@ export default class GoogleOauth2 {
     generateAuthUrl() {
         return this.oAuth2Client.generateAuthUrl({ scope: ['https://www.googleapis.com/auth/calendar'] })
     }
+
+    async verifyAccessToken(access_token) {
+        if (!access_token) throw new Error('Invalid Access Token')
+        const { email } = await this.oAuth2Client.getTokenInfo(access_token)
+        return !!email
+    }
 }
