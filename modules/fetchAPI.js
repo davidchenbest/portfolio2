@@ -7,26 +7,37 @@ const get = async (url) => {
     return await res.json();
 }
 
+async function request(type, url, body) {
+    const res = await fetch(url, {
+        method: type,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    })
+    if ((res.status + '').startsWith(4)) {
+        throw new Error('Bad Request');
+
+    }
+    return await res.json();
+}
+
 const post = async (url, body) => {
     try {
-        const res = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        })
-        if ((res.status + '').startsWith(4)) {
-            throw new Error('Bad Request');
+        return await request('POST', url, body)
+    } catch (error) {
+        console.error(error)
+    }
+}
 
-        }
-        console.log(res);
-        return await res.json();
+const DELETE = async (url, body = {}) => {
+    try {
+        return await request('DELETE', url, body)
     } catch (error) {
         console.error(error)
     }
 }
 
 
-export { get, post }
+export { get, post, DELETE }
