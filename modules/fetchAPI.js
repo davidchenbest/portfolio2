@@ -7,4 +7,26 @@ const get = async (url) => {
     return await res.json();
 }
 
-export { get }
+const post = async (url, body) => {
+    try {
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+        if ((res.status + '').startsWith(4)) {
+            throw new Error('Bad Request');
+
+        }
+        console.log(res);
+        return await res.json();
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+
+export { get, post }
