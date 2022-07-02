@@ -4,6 +4,7 @@ const keyPath = './privatekey.json'
 import { CALENDAR } from 'config'
 import GoogleOauth2 from "modules/GoogleOauth2"
 import Gmail from 'modules/Gmail'
+import { isTimeAvailable } from 'modules/CalendarEvent'
 const { MAIN_ID } = CALENDAR
 const { AUTH_COOKIE } = process.env
 
@@ -12,6 +13,7 @@ export default async function handler(req, res) {
         const calendar = new Calendar(keyPath)
         if (req.method === 'POST') {
             const { event } = req.body
+            await isTimeAvailable(event.start.dateTime, event.start.dateTime)
             const cookies = new Cookies(req, res)
             const access_token = cookies.get(AUTH_COOKIE)
             if (!access_token) throw new Error('missing access_token')

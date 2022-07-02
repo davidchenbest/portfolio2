@@ -57,6 +57,7 @@ export default class CalendarTime {
 
     }
     isTimeAvailable(time, interval, unavailable = this.unavailable) {
+        if (time < this.start || time >= this.end) return false
         for (const un of unavailable) {
             const [start, end] = un
             const newT = time + interval

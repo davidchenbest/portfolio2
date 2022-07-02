@@ -1,5 +1,5 @@
 import MongoConnection from "lib/mongoConnection"
-import { createEventObj, searchKeys } from 'modules/CalendarEvent'
+import { createEventObj, isTimeAvailable, searchKeys } from 'modules/CalendarEvent'
 
 export default async function handler(req, res) {
     const mongo = new MongoConnection('calendar', 'client')
@@ -7,6 +7,7 @@ export default async function handler(req, res) {
     try {
         if (req.method === 'POST') {
             const { name, startTime, endTime, summary, description, callType, attendees, phone } = req.body
+            await isTimeAvailable(+startTime, +endTime)
             const event = createEventObj(req.body)
             const doc = { name, event }
             const sameTime = await connection.findOne({ [searchKeys('startTime')]: new Date(+startTime).toISOString() })

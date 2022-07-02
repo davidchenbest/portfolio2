@@ -34,18 +34,18 @@ export default function Schedule() {
         setMeetDate({ month: month + 1, date, year })
     }, [])
     useEffect(() => {
-        if (meetDate) initCalendarTime(meetDate.month, meetDate.date)
+        if (meetDate) initCalendarTime(meetDate.year, meetDate.month, meetDate.date)
     }, [meetDate])
     useEffect(() => {
         if (unavailable) calculateAvailable(interval)
     }, [unavailable, interval])
 
-    async function initCalendarTime(month, date) {
+    async function initCalendarTime(year, month, date) {
         const res = await fetch(`/api/calendar/date?month=${month}&date=${date}`)
         const data = await res.json()
         setUnavailable(data)
-        const start = new Date(2022, month - 1, date, MEET_START_HOUR, 0).getTime()
-        const end = new Date(2022, month - 1, date, MEET_END_HOUR, 0).getTime()
+        const start = new Date(year, month - 1, date, MEET_START_HOUR, 0).getTime()
+        const end = new Date(year, month - 1, date, MEET_END_HOUR, 0).getTime()
         meetRef.current = new CalendarTime(start, end, data)
 
     }
