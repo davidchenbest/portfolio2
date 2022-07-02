@@ -1,5 +1,6 @@
 const { google } = require('googleapis');
 const { GOOGLE_CLIENT_ID, GOOGLE_REDIRECT_URI, GOOGLE_CLIENT_SECRET } = process.env
+const scope = ['https://www.googleapis.com/auth/calendar', 'https://mail.google.com/']
 
 export default class GoogleOauth2 {
     constructor(access_token) {
@@ -8,7 +9,7 @@ export default class GoogleOauth2 {
     }
 
     generateAuthUrl() {
-        return this.oAuth2Client.generateAuthUrl({ scope: ['https://www.googleapis.com/auth/calendar'] })
+        return this.oAuth2Client.generateAuthUrl({ scope })
     }
 
     async verifyAccessToken(access_token) {
