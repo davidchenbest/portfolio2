@@ -1,5 +1,6 @@
 import Button from "components/lib/Button"
 import Input from "components/lib/Input"
+import Textarea from "components/lib/Textarea"
 import { useState } from "react"
 const CALL_TYPE = ['video', 'phone']
 
@@ -57,7 +58,7 @@ export default function EventForm({ meetTime, interval, showSubmit }) {
                 <Input type='tel' name='phone' placeholder='Phone' required />
             </span>}
         <Input type='text' name='summary' placeholder='Event Title/Company' />
-        <span><textarea placeholder='description' name='description' /></span>
+        <span><Textarea placeholder='description' name='description' /></span>
         <input type='number' name='startTime' value={meetTime} hidden readOnly />
         <input type='number' name='endTime' value={+meetTime + interval} hidden readOnly />
         {showSubmit && <span><Button type='submit'>Submit</Button></span>}
