@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { emailQuery, addAuthor } from '../../../queries/queries'
 import fetchGraphQL from '../../../modules/fetchGraphQL'
 import Button from 'components/lib/Button';
+import Input from 'components/lib/Input';
 
 class CheckEmail extends Component {
     constructor(props) {
@@ -71,7 +72,7 @@ class CheckEmail extends Component {
     display = () => {
         if (this.state.isAuthor) return (
             <form className='checkEmailForm' onSubmit={this.checkEmail}>
-                <input onChange={(e) => this.setState({ email: e.target.value })} placeholder='Email' required></input>
+                <Input onChange={(e) => this.setState({ email: e.target.value })} placeholder='Email' required></Input>
                 <div className='btn-con'>
                     <Button name="Enter" />
                     <Button name="Back" onClick={this.goBack} />
@@ -81,11 +82,11 @@ class CheckEmail extends Component {
         return (
             <form className='checkEmailForm' onSubmit={this.checkEmail}>
                 <label>Email</label>
-                <input onChange={(e) => this.setState({ email: e.target.value })} value={this.state.email} required></input>
+                <Input onChange={(e) => this.setState({ email: e.target.value })} value={this.state.email} required></Input>
                 <label>First</label>
-                <input onChange={(e) => this.setState({ first: e.target.value })} required></input>
+                <Input onChange={(e) => this.setState({ first: e.target.value })} required></Input>
                 <label>Last</label>
-                <input onChange={(e) => this.setState({ last: e.target.value })} required></input>
+                <Input onChange={(e) => this.setState({ last: e.target.value })} required></Input>
                 <span>{this.state.error}</span>
                 <div className='btn-con'>
                     <Button name="Enter" />

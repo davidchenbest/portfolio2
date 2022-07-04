@@ -114,18 +114,13 @@
   flex-direction: center;
 }
 
-.checkEmailForm input {
+.input {
   padding: 5px;
-  font-size: 20px;
-  text-align: center;
+  font-size: 1rem;
+  /* text-align: center; */
   border: 1px solid lightgrey;
   border-bottom: none;
   border-radius: 5px;
-}
-
-.checkEmailForm button {
-  width: 80px;
-  text-align: center;
 }
 
 .checkEmailForm button:not(:last-child) {

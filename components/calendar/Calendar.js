@@ -1,4 +1,5 @@
 import Button from 'components/lib/Button'
+import Input from 'components/lib/Input'
 import useToggle from 'modules/hooks/useToggle'
 import { useState, useEffect, useMemo } from 'react'
 import ColorKey from './ColorKey'
@@ -46,7 +47,7 @@ export default function Calendar() {
             <ColorKey userSources={userSources} />
             {userSources.length === 0 || retryAddCalendar ? <form onSubmit={appendCalendar}>
                 <label>See your schdule on calendar</label>
-                <input type='text' name='sourceId' />
+                <Input type='text' name='sourceId' />
                 <Button type='submit'>Submit</Button>
             </form> : <Button onClick={() => setRetryAddCalendar(true)}>Add different calendar</Button>}
             {query && <iframe src={BASE + query} style={{ display: 'block', margin: 'auto', maxWidth: '800px', width: '100%', height: '600px' }} frameBorder="0" scrolling="yes" />}

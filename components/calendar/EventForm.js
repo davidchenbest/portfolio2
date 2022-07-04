@@ -1,4 +1,5 @@
 import Button from "components/lib/Button"
+import Input from "components/lib/Input"
 import { useState } from "react"
 const CALL_TYPE = ['video', 'phone']
 
@@ -33,7 +34,7 @@ export default function EventForm({ meetTime, interval, showSubmit }) {
 
     return <form onSubmit={submit} action="/api/calendar/client" method="post" style={{ display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
         <span>
-            <input type='text' name='name' placeholder='name' />
+            <Input type='text' name='name' placeholder='name' />
         </span>
 
         {CALL_TYPE.map(type => <span key={type}>
@@ -43,7 +44,7 @@ export default function EventForm({ meetTime, interval, showSubmit }) {
             ? <>
                 <span style={{ display: 'flex', gap: '.5rem' }}>
                     <label >Add Attendee</label>
-                    <input type='text' placeholder='email' value={attendee} onChange={e => setAttendee(e.target.value)} />
+                    <Input type='text' placeholder='email' value={attendee} onChange={e => setAttendee(e.target.value)} />
                     <Button onClick={addAttendee}>Add</Button>
                 </span>
                 <>
@@ -53,9 +54,9 @@ export default function EventForm({ meetTime, interval, showSubmit }) {
                 </>
             </>
             : <span>
-                <input type='tel' name='phone' placeholder='Phone' required />
+                <Input type='tel' name='phone' placeholder='Phone' required />
             </span>}
-        <input type='text' name='summary' placeholder='Event Title/Company' />
+        <Input type='text' name='summary' placeholder='Event Title/Company' />
         <span><textarea placeholder='description' name='description' /></span>
         <input type='number' name='startTime' value={meetTime} hidden readOnly />
         <input type='number' name='endTime' value={+meetTime + interval} hidden readOnly />

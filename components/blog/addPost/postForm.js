@@ -1,4 +1,5 @@
 import Button from 'components/lib/Button';
+import Input from 'components/lib/Input';
 import React, { Component } from 'react';
 
 
@@ -27,7 +28,7 @@ class PostForm extends Component {
     render() {
         return (
             <form autoComplete="off">
-                <input id='post-form-title' placeholder='Title' type='text' onChange={(e) => this.setState({ title: e.target.value })} value={this.state.title}></input>
+                <Input placeholder='Title' type='text' onChange={(e) => this.setState({ title: e.target.value })} value={this.state.title}></Input>
                 <textarea id='post-form-ta' onChange={(e) => this.setState({ content: e.target.value })} value={this.state.content}></textarea>
                 <div id='post-form-btn-con'>
                     <span id='post-form-error'>{this.state.error}</span>
