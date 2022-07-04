@@ -1,3 +1,4 @@
+import Button from 'components/lib/Button';
 import React, { Component } from 'react';
 
 
@@ -30,7 +31,7 @@ class PostForm extends Component {
                 <textarea id='post-form-ta' onChange={(e) => this.setState({ content: e.target.value })} value={this.state.content}></textarea>
                 <div id='post-form-btn-con'>
                     <span id='post-form-error'>{this.state.error}</span>
-                    <button onClick={this.submit} >Post</button>
+                    <Button name='Post' onClick={this.submit} />
                 </div>
             </form>
         );

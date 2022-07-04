@@ -1,3 +1,4 @@
+import Button from "components/lib/Button"
 import { useEffect, useRef, useState } from "react"
 import HoverButton from "../HoverButton"
 import Cord from "./Cord"
@@ -119,11 +120,11 @@ export default function App() {
                 </canvas>
             </span>
             <div className={styles.buttons}>
-                {CORDS.length !== NUMBER_VERTEX && <button onClick={setDefaultVertex}>Default vertex</button>}
+                {CORDS.length !== NUMBER_VERTEX && <Button name='Default vertex' onClick={setDefaultVertex} />}
                 {currentPoint && <>
-                    <button onClick={plotRandom}>Plot</button>
+                    <Button onClick={plotRandom} name='Plot' />
                     <HoverButton onClick={automatePlot} name='Automate' text={`automate ${AUTOMATE} plots`} />
-                    <button onClick={reset}>Reset</button>
+                    <Button onClick={reset} name='Reset' />
                 </>}
             </div>
         </div>

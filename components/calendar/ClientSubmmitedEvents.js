@@ -1,3 +1,4 @@
+import Button from "components/lib/Button"
 import { DELETE, post } from "modules/fetchAPI"
 import { useState } from "react"
 
@@ -28,8 +29,8 @@ export default function ClientSubmittedEvents({ data }) {
         {submits.map((d, i) => <div key={i}>
             <h3>{d.name}</h3>
             <p>{new Date(d.event.start.dateTime).toLocaleTimeString()}-{new Date(d.event.end.dateTime).toLocaleTimeString()}</p>
-            <button onClick={() => addMeet(i)}>Add</button>
-            <button onClick={() => removeMeet(i)}>Remove</button>
+            <Button onClick={() => addMeet(i)}>Add</Button>
+            <Button onClick={() => removeMeet(i)}>Remove</Button>
         </div>)}
     </>
 }

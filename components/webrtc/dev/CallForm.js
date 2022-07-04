@@ -1,3 +1,4 @@
+import Button from "components/lib/Button";
 import { useContext, useState } from "react";
 import { ConnectionContext } from "../ConnectionContext";
 
@@ -7,7 +8,7 @@ function CallForm() {
 
   return <div className="dev">
     <input type="text" value={remotePeerIdValue} onChange={e => setRemotePeerIdValue(e.target.value)} placeholder='peer id' />
-    <button onClick={() => callVideo(remotePeerIdValue)}>Call</button>
+    <Button onClick={() => callVideo(remotePeerIdValue)}>Call</Button>
   </div>
 }
 

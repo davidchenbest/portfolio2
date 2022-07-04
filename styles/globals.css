@@ -16,20 +16,6 @@
   padding: 15px;
 }
 
-.button {
-  font-size: 16px;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: black;
-  white-space: nowrap;
-}
-
-.button:hover {
-  background-color: #385898;
-  color: white;
-}
-
 .preserveBreak {
   white-space: pre-line;
   /* preserve line break */
@@ -47,30 +33,29 @@
 }
 
 #post-form {
-  margin: auto;
-  margin-top: 20px;
+  margin: 0 auto 2rem auto;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-#post-form #add-post {
-  font-size: large;
+.button {
   border-radius: 5px;
-  margin-bottom: 15px;
   padding: 3px 15px;
   border: 1px solid lightgrey;
 }
 
-#post-form #add-post:hover {
-  background-color: lightgrey;
+.button:hover {
+  background-color: #385898;
+  color: white;
 }
+
+
 
 #post-form form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
 }
 
 #post-form-title {

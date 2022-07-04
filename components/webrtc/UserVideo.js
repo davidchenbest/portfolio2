@@ -3,6 +3,7 @@ import { ConnectionContext } from "./ConnectionContext";
 import styles from './styles/userVideo.module.css'
 
 import UserVideoControls from "./lib/UserVideoControls";
+import Button from "components/lib/Button";
 
 const userVideoControls = new UserVideoControls()
 
@@ -110,8 +111,8 @@ function Video() {
         {
           videoReady ?
             <>
-              {videoOn ? <button onClick={handleToggleVideo}> StopVideo</button> : <button onClick={handleToggleVideo}> StartVideo</button>}
-              {audioOn ? <button onClick={handleToggleAudio}> StopAudio</button> : <button onClick={handleToggleAudio}> StartAudio</button>}
+              {videoOn ? <Button onClick={handleToggleVideo}> StopVideo</Button> : <Button onClick={handleToggleVideo}> StartVideo</Button>}
+              {audioOn ? <Button onClick={handleToggleAudio}> StopAudio</Button> : <Button onClick={handleToggleAudio}> StartAudio</Button>}
             </>
             : <span style={{ alignSelf: 'center' }}>Loading</span>
         }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { emailQuery, addAuthor } from '../../../queries/queries'
 import fetchGraphQL from '../../../modules/fetchGraphQL'
+import Button from 'components/lib/Button';
 
 class CheckEmail extends Component {
     constructor(props) {
@@ -72,8 +73,8 @@ class CheckEmail extends Component {
             <form className='checkEmailForm' onSubmit={this.checkEmail}>
                 <input onChange={(e) => this.setState({ email: e.target.value })} placeholder='Email' required></input>
                 <div className='btn-con'>
-                    <button className='button'>Enter</button>
-                    <button onClick={this.goBack} className='button'>Back</button>
+                    <Button name="Enter" />
+                    <Button name="Back" onClick={this.goBack} />
                 </div>
             </form>
         )
@@ -87,9 +88,8 @@ class CheckEmail extends Component {
                 <input onChange={(e) => this.setState({ last: e.target.value })} required></input>
                 <span>{this.state.error}</span>
                 <div className='btn-con'>
-
-                    <button className='button'>Enter</button>
-                    <button onClick={this.goBack} className='button'>Back</button>
+                    <Button name="Enter" />
+                    <Button name="Back" onClick={this.goBack} />
                 </div>
             </form>
         )

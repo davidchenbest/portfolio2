@@ -1,3 +1,4 @@
+import Button from "components/lib/Button";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ConnectionContext } from "./ConnectionContext";
 import JoinRoomForm from "./JoinRoomForm";
@@ -62,7 +63,7 @@ function RoomSocket() {
     const displayConnected = () => {
         return <>
             <p>connected to room:{room}</p>
-            <button onClick={leaveRoom}>Leave Room </button>
+            <Button onClick={leaveRoom}>Leave Room </Button>
             {/* <form onSubmit={e => e.preventDefault() || leaveRoom() }>
                 <input ref={inputRef} />
                 <input type='submit' />

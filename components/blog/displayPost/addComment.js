@@ -3,6 +3,7 @@ import CheckEmail from '../addPost/checkEmail'
 import ReviewScreen from '../addPost/reviewScreen'
 import { addComment } from '../../../queries/queries'
 import fetchGraphQL from '../../../modules/fetchGraphQL'
+import Button from 'components/lib/Button'
 
 const AddComment = ({ id }) => {
     const [comment, setComment] = useState('')
@@ -37,11 +38,11 @@ const AddComment = ({ id }) => {
         else if (commentForm) return (
             <form onSubmit={(e) => { e.preventDefault(); setCheckEmailform(!checkEmailForm) }} className='commentForm'>
                 <textarea type='text' onChange={(e) => setComment(e.target.value)} value={comment} placeholder='Comment' ></textarea>
-                <input type='submit' className='button' />
+                <Button type='submit' name='Submit' />
             </form>
         )
         return (
-            <button className='button' onClick={() => setCommentForm(!commentForm)}>Comment</button>
+            <Button name='Comment' onClick={() => setCommentForm(!commentForm)} />
         )
     }
 

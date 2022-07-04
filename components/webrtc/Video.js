@@ -2,6 +2,7 @@ import { useRef, useEffect, useContext, useState } from "react";
 import { ConnectionContext } from "./ConnectionContext";
 import styles from './styles/video.module.css'
 import VideoControls from "./lib/VideoControls";
+import Button from "components/lib/Button";
 
 const videoControls = new VideoControls()
 
@@ -44,9 +45,9 @@ function Video({ srcObject, id, call, name, socketId }) {
       <div className={styles.peerVideoControls}>
         {videoReady ?
           <>
-            <button onClick={toggleVideo}>video</button>
-            <button onClick={toggleAudio}>audio</button>
-            <button onClick={handleRemoveUser}>X</button>
+            <Button onClick={toggleVideo}>video</Button>
+            <Button onClick={toggleAudio}>audio</Button>
+            <Button onClick={handleRemoveUser}>X</Button>
           </>
           : <span>Loading</span>
         }

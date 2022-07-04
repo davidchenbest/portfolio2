@@ -1,3 +1,4 @@
+import Button from "components/lib/Button"
 import { useContext, useRef } from "react"
 import { ConnectionContext } from "./ConnectionContext"
 
@@ -18,7 +19,7 @@ function JoinRoomForm() {
     return (!room || !name) && <form onSubmit={submitForm}>
         <input ref={roomRef} placeholder='room' defaultValue={room} required />
         <input ref={nameRef} placeholder='name' defaultValue={name} required />
-        <button>Join Room</button>
+        <Button>Join Room</Button>
     </form>
 }
 

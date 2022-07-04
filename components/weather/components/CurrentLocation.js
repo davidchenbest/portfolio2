@@ -1,3 +1,4 @@
+import Button from 'components/lib/Button'
 import React, { useState } from 'react'
 import styles from '../styles/currentLocation.module.css'
 // import { FaLocationArrow } from 'react-icons/fa';
@@ -18,7 +19,7 @@ export default function CurrentLocation({ currentLocationClick, isCurrentLocatio
                 </div>
                 :
                 <div onMouseEnter={toggleShowHelper} onMouseLeave={toggleShowHelper} className={styles.useCurrentCon}>
-                    <button onClick={currentLocationClick}>{/*<BiCurrentLocation />*/}<span>Location</span></button>
+                    <Button onClick={currentLocationClick}>{/*<BiCurrentLocation />*/}<span>Location</span></Button>
                     {showHelper && <span className={styles.helper}>Use Location</span>}
                 </div>
             }

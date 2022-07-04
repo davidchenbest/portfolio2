@@ -5,21 +5,12 @@
 }
 
 .locationForm input,
-.locationForm select,
-.locationForm button[type='submit'] {
+.locationForm select {
   font-size: 1em;
   padding: 0.25em;
   border-radius: 5px;
 }
 
-.locationForm button[type='submit'] {
-  border: none;
-  padding: 0 0.25em;
-}
-
-.locationForm button[type='submit']:hover {
-  background-color: skyblue;
-}
 
 @media (max-width: 400px) {
   .locationForm input[type='text'] {

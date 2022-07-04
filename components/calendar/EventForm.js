@@ -1,7 +1,8 @@
+import Button from "components/lib/Button"
 import { useState } from "react"
 const CALL_TYPE = ['video', 'phone']
 
-export default function EventForm({ meetTime, interval }) {
+export default function EventForm({ meetTime, interval, showSubmit }) {
     const [callType, setCallType] = useState('video')
     const [attendees, setAttendees] = useState([])
     const [attendee, setAttendee] = useState('')
@@ -43,7 +44,7 @@ export default function EventForm({ meetTime, interval }) {
                 <span style={{ display: 'flex', gap: '.5rem' }}>
                     <label >Add Attendee</label>
                     <input type='text' placeholder='email' value={attendee} onChange={e => setAttendee(e.target.value)} />
-                    <button onClick={addAttendee}>Add</button>
+                    <Button onClick={addAttendee}>Add</Button>
                 </span>
                 <>
                     {attendees.map(a => <span key={a}>
@@ -58,6 +59,6 @@ export default function EventForm({ meetTime, interval }) {
         <span><textarea placeholder='description' name='description' /></span>
         <input type='number' name='startTime' value={meetTime} hidden readOnly />
         <input type='number' name='endTime' value={+meetTime + interval} hidden readOnly />
-        <span><input type='submit' /></span>
+        {showSubmit && <span><Button type='submit'>Submit</Button></span>}
     </form>
 } 

@@ -1,3 +1,4 @@
+import Button from 'components/lib/Button'
 import React, { useEffect, useState } from 'react'
 // import { FaSearch } from 'react-icons/fa'
 import styles from '../styles/switchLocation.module.css'
@@ -48,7 +49,7 @@ export default function SwitchLocation({ searchObj, setSearchObj, setIsCurrentLo
                 {typeOptions.map(t => <option value={t.value} key={t.value}>{t.name}</option>)}
             </select>
             <input type='text' value={locationSearch} onChange={e => setLocationSearch(e.target.value)} />
-            <button type='submit' >{/*<FaSearch />*/}<span>search</span></button>
+            <Button type='submit' style={{ fontSize: '1rem' }}>{/*<FaSearch />*/}<span>Search</span></Button>
         </form>
     )
 }

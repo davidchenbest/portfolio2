@@ -4,6 +4,7 @@ import CheckEmail from './checkEmail'
 import ReviewScreen from './reviewScreen'
 import { addReviewPost } from '../../../queries/queries'
 import fetchGraphQL from '../../../modules/fetchGraphQL'
+import Button from 'components/lib/Button';
 
 class AddPostForm extends Component {
     constructor() {
@@ -66,7 +67,7 @@ class AddPostForm extends Component {
 
     display = () => {
         if (!this.state.showForm) return (
-            <button id='add-post' onClick={() => this.setState({ showForm: !this.state.showForm })} >Post</button>
+            <Button onClick={() => this.setState({ showForm: !this.state.showForm })} name='Post' />
         )
         if (this.state.reviewScreen) {
             return (<ReviewScreen goBack={this.setReviewScreen} type='post' title={this.state.title}></ReviewScreen>)
