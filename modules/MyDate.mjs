@@ -5,6 +5,18 @@ export default class MyDate {
         this.month = this.date.getMonth()
         this.dateNum = this.date.getDate()
     }
+    dateWithTimeZone = (timeZone, year, month, day, hour = 0, minute = 0, second = 0) => {
+        const date = new Date(Date.UTC(year, month, day, hour, minute, second));
+
+        const utcDate = new Date(date.toLocaleString('en-US', { timeZone: "UTC" }));
+        const tzDate = new Date(date.toLocaleString('en-US', { timeZone: timeZone }));
+        const offset = utcDate.getTime() - tzDate.getTime();
+
+        date.setTime(date.getTime() + offset);
+
+        return date;
+    }
+
     getFirstDateOfMonth = (month = this.month) => {
         this.validMonth(month)
         return new Date(this.year, month, 1)

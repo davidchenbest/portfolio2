@@ -3,7 +3,7 @@ import CalendarTime from "./CalendarTime"
 import MyDate from "./MyDate.mjs"
 import { CALENDAR } from 'config'
 const { IDS } = CALENDAR
-const { MEET_START_HOUR, MEET_END_HOUR } = process.env
+const { MEET_START_HOUR, MEET_END_HOUR, TIMEZONE } = process.env
 
 export function createConferenceObj(randomString) {
     return {
@@ -62,8 +62,9 @@ export async function isTimeAvailable(startDate, endDate) {
     const calendar = new Calendar()
     const promises = IDS.map(id => calendar.listAllEvents(id, { timeMin: first, timeMax: last }))
     const data = await Promise.all(promises)
-    const start = new Date(year, month, date, MEET_START_HOUR, 0).getTime()
-    const end = new Date(year, month, date, MEET_END_HOUR, 0).getTime()
+
+    const start = myDate.dateWithTimeZone(TIMEZONE, year, month, date, MEET_START_HOUR).getTime()
+    const end = myDate.dateWithTimeZone(TIMEZONE, year, month, date, MEET_END_HOUR).getTime()
     const calendarTime = new CalendarTime(start, end, data)
     const interval = endDate.getTime() - startDate.getTime()
     const available = calendarTime.isTimeAvailable(startDate.getTime(), interval)
