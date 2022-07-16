@@ -5,6 +5,7 @@ import { CALENDAR } from 'config'
 import GoogleOauth2 from "modules/GoogleOauth2"
 import Gmail from 'modules/Gmail'
 import { isTimeAvailable } from 'modules/CalendarEvent'
+import authGuard from 'modules/authGuard'
 const { MAIN_ID } = CALENDAR
 const { AUTH_COOKIE } = process.env
 
@@ -13,11 +14,12 @@ export default async function handler(req, res) {
         const calendar = new Calendar(keyPath)
         if (req.method === 'POST') {
             const { event } = req.body
-            await isTimeAvailable(event.start.dateTime, event.start.dateTime)
+            await isTimeAvailable(event.start.dateTime, event.end.dateTime)
             const cookies = new Cookies(req, res)
             const access_token = cookies.get(AUTH_COOKIE)
             if (!access_token) throw new Error('missing access_token')
             if (!event || !access_token) throw new Error('missing body parameters')
+            await authGuard(access_token)
             const auth = new GoogleOauth2(access_token).oAuth2Client
             const scheduleEvent = await calendar.createEvent(MAIN_ID, event, auth)
             const { attendees, hangoutLink, start, end } = scheduleEvent

@@ -3,7 +3,7 @@ import { DELETE, post } from "modules/fetchAPI"
 import { useState } from "react"
 
 export default function ClientSubmittedEvents({ data }) {
-    const [submits, setSubmits] = useState(JSON.parse(data))
+    const [submits, setSubmits] = useState(data.length > 0 ? JSON.parse(data) : [])
 
     const remove = (index) => {
         const arr = [...submits]

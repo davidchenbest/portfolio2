@@ -17,4 +17,9 @@ export default class GoogleOauth2 {
         const { email } = await this.oAuth2Client.getTokenInfo(access_token)
         return !!email
     }
+
+    async getUserInfo(access_token) {
+        if (!access_token) throw new Error('Invalid Access Token')
+        return await this.oAuth2Client.getTokenInfo(access_token)
+    }
 }

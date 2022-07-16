@@ -1,18 +1,20 @@
 import Cookies from 'cookies'
 import MongoConnection from "lib/mongoConnection"
+import authGuard from 'modules/authGuard'
 import { searchKeys } from "modules/CalendarEvent"
-import GoogleOauth2 from 'modules/GoogleOauth2'
+// import GoogleOauth2 from 'modules/GoogleOauth2'
 import { ObjectId } from 'mongodb'
 const { AUTH_COOKIE } = process.env
 
 export default async function handler(req, res) {
     const mongo = new MongoConnection('calendar', 'client')
-    const connection = await mongo.getConnection()
     try {
 
         const cookies = new Cookies(req, res)
         const access_token = cookies.get(AUTH_COOKIE)
-        await new GoogleOauth2().verifyAccessToken(access_token)
+        // await new GoogleOauth2().verifyAccessToken(access_token)
+        await authGuard(access_token)
+        const connection = await mongo.getConnection()
         if (req.method === 'DELETE') {
             const { id } = req.query
             const result = await connection.deleteOne({ _id: ObjectId(id) })
