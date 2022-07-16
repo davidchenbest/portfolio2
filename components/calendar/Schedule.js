@@ -1,8 +1,7 @@
-import Loading from "components/Loading"
 import CalendarTime from "modules/CalendarTime"
-import { post } from "modules/fetchAPI"
 import MyDate from "modules/MyDate.mjs"
 import { useEffect, useRef, useState, useMemo } from "react"
+import AvailableTimes from "./AvailableTimes"
 import EventForm from "./EventForm"
 process.env
 const { DEFAULT_MEET_DURATION, MEET_START_HOUR, MEET_END_HOUR, TIMEZONE } = process.env
@@ -107,22 +106,11 @@ export default function Schedule() {
         console.log(data)
     }
 
-    const formatTime = (interval) => {
-        const answer = []
-        let min = interval / 60 / 1000
-        const hour = Math.floor(min / 60)
-        if (hour) answer.push(`${hour} hr`)
-        min = min % 60
-        if (min) answer.push(`${min} min`)
-        return answer.join(' ')
-    }
-
-
     return <div style={{ display: 'grid', gap: '.5rem', 'gridTemplateColumns': '1fr 1fr', 'alignItems': 'start' }}>
         <span style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 {meetDate?.date && <h2>{meetDate.month}/{meetDate.date}/{meetDate.year}</h2>}
-                {meetTime && <h4>{meetRef.current.timeToString(+meetTime)}</h4>}
+                {meetTime && <h4>{meetRef.current.timeToString(+meetTime)} - {meetRef.current.timeToString(+meetTime + interval)}</h4>}
                 {/* {meetTime && meetDate && <Button onClick={schedule}>Continue</Button>} */}
             </div>
             <form style={{ display: 'flex', gap: '.5rem', alignItems: 'center' }}>
@@ -139,7 +127,7 @@ export default function Schedule() {
                 {available &&
                     <>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '' }}>
-                            <label >{formatTime(interval)}</label>
+                            <label >{meetRef.current.formatTime(interval)}</label>
                             <input type="range" min="10" max="120" step={5} value={interval / 60 / 1000} onChange={changeInterval}></input>
                         </div>
                         <select onChange={selectTime} value={meetTime}>
@@ -149,14 +137,8 @@ export default function Schedule() {
                     </>}
 
             </form>
-            <section>
-                <h3>Available Times</h3>
-                {available ? available.map((a, i) => <p key={i} style={meetTime >= a[0] && meetTime < a[1] ? { backgroundColor: '#385898', color: 'white' } : null}>
-                    {meetRef.current.timeToString(a[0])} - {meetRef.current.timeToString(a[1])} ({formatTime(a[1] - a[0])})
-                </p>)
-                    : <Loading />}
-            </section>
+            <AvailableTimes available={available} meetTime={meetTime} />
         </span>
-        <EventForm meetTime={meetTime} interval={interval} showSubmit={meetTime && meetDate} />
+        <EventForm meetTime={meetTime} interval={interval} />
     </div >
 } 

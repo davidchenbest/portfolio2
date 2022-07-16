@@ -57,6 +57,7 @@ export default class CalendarTime {
 
     }
     isTimeAvailable(time, interval, unavailable = this.unavailable) {
+        if (time <= new Date().getTime()) return false
         if (time < this.start || time >= this.end) return false
         for (const un of unavailable) {
             const [start, end] = un
@@ -77,6 +78,16 @@ export default class CalendarTime {
         let min = t.getMinutes()
         if (min < 10) min = '0' + min
         return `${hr}:${min} ${m}`
+    }
+
+    formatTime = (interval) => {
+        const answer = []
+        let min = interval / 60 / 1000
+        const hour = Math.floor(min / 60)
+        if (hour) answer.push(`${hour} hr`)
+        min = min % 60
+        if (min) answer.push(`${min} min`)
+        return answer.join(' ')
     }
 
     printTimes(times = this.unavailable) {
