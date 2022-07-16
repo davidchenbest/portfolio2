@@ -16,7 +16,7 @@ export default async function handler(req, res) {
             const data = await connection.insertOne(doc)
             if (!data?.insertedId) throw new Error('error request for meet')
             const mailer = new Mailer()
-            await mailer.sendEmail()
+            mailer.sendEmail()
             return res.status(200).json(data)
         }
         res.status(200).json({ test: req.method })
