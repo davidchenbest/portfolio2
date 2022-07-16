@@ -1,19 +1,38 @@
 import Button from "components/lib/Button"
 import Input from "components/lib/Input"
 import Textarea from "components/lib/Textarea"
-import { useState } from "react"
+import Loading from "components/Loading"
+import { post } from "modules/fetchAPI"
+import { useEffect, useState } from "react"
 const CALL_TYPE = ['video', 'phone']
 
-export default function EventForm({ meetTime, interval, showSubmit }) {
+export default function EventForm({ meetTime, interval }) {
     const [callType, setCallType] = useState('video')
     const [attendees, setAttendees] = useState([])
     const [attendee, setAttendee] = useState('')
-    const submit = (e) => {
+    const [enableSubmit, setEnableSubmit] = useState(true)
+    const [error, setError] = useState()
+    const [submitted, setSubmitted] = useState()
+    useEffect(() => {
+        setError(false)
+    }, [meetTime])
+    const submit = async (e) => {
         try {
+            e.preventDefault()
+            setEnableSubmit(false)
             console.log(e.target.callType.value);
+            const data = new FormData(e.target);
+            const body = Object.fromEntries(data.entries());
+            const res = await post('/api/calendar/client', body)
+            if (res?.insertedId) setSubmitted(true)
+            else if (res?.error) setError(res.error)
+            else setError('Error Submitting')
         } catch (error) {
             e.preventDefault()
             console.error(error)
+        }
+        finally {
+            setEnableSubmit(true)
         }
     }
     const addAttendee = e => {
@@ -32,6 +51,11 @@ export default function EventForm({ meetTime, interval, showSubmit }) {
     }
 
     if (!meetTime) return null
+
+    if (submitted) return <div>
+        <p>Request has Sucessfully Submitted for Review</p>
+        <Button onClick={() => setSubmitted(false)}>Add Another</Button>
+    </div>
 
     return <form onSubmit={submit} action="/api/calendar/client" method="post" style={{ display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
         <span>
@@ -61,6 +85,11 @@ export default function EventForm({ meetTime, interval, showSubmit }) {
         <span><Textarea placeholder='description' name='description' /></span>
         <input type='number' name='startTime' value={meetTime} hidden readOnly />
         <input type='number' name='endTime' value={+meetTime + interval} hidden readOnly />
-        {showSubmit && <span><Button type='submit'>Submit</Button></span>}
+        <span>{enableSubmit ?
+            <>
+                {error && <p>{error}</p>}
+                <Button type='submit'>Submit</Button>
+            </>
+            : <Loading name='Submitting' />}</span>
     </form>
 } 

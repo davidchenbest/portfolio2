@@ -15,8 +15,13 @@ export function createConferenceObj(randomString) {
         }
     }
 }
-export function createEventObj({ startTime, endTime, summary, description, callType, attendees, phone }) {
+export function createEventObj({ name, startTime, endTime, summary, description, callType, attendees, phone }) {
+    if (!startTime || !endTime) throw new Error('missing meeting time')
+    if (!name || !name.trim().length) throw new Error('missing name')
     const isVideo = callType.toLowerCase() === 'video'
+    if (isVideo) throw new Error('missing attendee')
+    else if (!phone) throw new Error('missing phone')
+
     if (phone) description = `phone: ${phone}\n` + description
     if (!attendees) attendees = []
     else if (!Array.isArray(attendees)) attendees = [attendees]
