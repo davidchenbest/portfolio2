@@ -11,8 +11,8 @@ export default async function handler(req, res) {
             await isTimeAvailable(+startTime, +endTime)
             const event = createEventObj(req.body)
             const doc = { name, event }
-            const sameTime = await connection.findOne({ [searchKeys('startTime')]: new Date(+startTime).toISOString() })
-            if (sameTime) throw new Error('duplicate request time found')
+            // const sameTime = await connection.findOne({ [searchKeys('startTime')]: new Date(+startTime).toISOString() })
+            // if (sameTime) throw new Error('duplicate request time found')
             const data = await connection.insertOne(doc)
             if (!data?.insertedId) throw new Error('error request for meet')
             const mailer = new Mailer()
