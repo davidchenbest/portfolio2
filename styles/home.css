@@ -157,14 +157,13 @@ a {
 }
 
 .portfolioContainer .button {
-  margin-top: 50px;
+  font-size: .8rem;
   display: inline-block;
   border-radius: 5px;
   border: 1px solid navy;
 }
 
-.portfolioContainer p,
-a {
+.portfolioContainer p {
   font-size: 18px;
 }
 

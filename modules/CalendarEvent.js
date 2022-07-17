@@ -19,8 +19,8 @@ export function createEventObj({ name, startTime, endTime, summary, description,
     if (!startTime || !endTime) throw new Error('missing meeting time')
     if (!name || !name.trim().length) throw new Error('missing name')
     const isVideo = callType.toLowerCase() === 'video'
-    if (isVideo) throw new Error('missing attendee')
-    else if (!phone) throw new Error('missing phone')
+    if (isVideo && !attendees?.length) throw new Error('missing attendee')
+    else if (!isVideo && !phone) throw new Error('missing phone')
 
     if (phone) description = `phone: ${phone}\n` + description
     if (!attendees) attendees = []

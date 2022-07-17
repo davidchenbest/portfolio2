@@ -106,7 +106,7 @@ export default function Schedule() {
         console.log(data)
     }
 
-    return <div style={{ display: 'grid', gap: '.5rem', 'gridTemplateColumns': '1fr 1fr', 'alignItems': 'start' }}>
+    return <div style={{ display: 'flex', gap: '4rem', flexDirection: 'row', 'alignItems': 'start', flexWrap: 'wrap' }}>
         <span style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 {meetDate?.date && <h2>{meetDate.month}/{meetDate.date}/{meetDate.year}</h2>}

@@ -38,6 +38,12 @@ const data = {
         keywords: `sierpinski, triangle`,
     },
 
+    'calendar': {
+        title: `Meet with ${TITLE_NAME}`,
+        description: `Schedule a meeting with ${TITLE_NAME}`,
+        keywords: `calendar, meet`,
+    },
+
 }
 
 export default data

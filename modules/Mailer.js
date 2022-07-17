@@ -28,8 +28,10 @@ export default class Mailer {
         try {
             const info = await this.transporter.sendMail(mailOptions)
             console.log('Email sent: ' + info.response);
+            return info
         } catch (error) {
             console.error(error);
+            return error.message
         }
     }
 }
