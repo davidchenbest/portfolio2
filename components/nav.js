@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import ActiveLink from './ActiveLink'
+import Github from './lib/Github'
 const { IMG_UNOPTIMIZE } = process.env
 
 export default function Nav() {
@@ -51,7 +52,7 @@ export default function Nav() {
                     <Link href="https://github.com/davidchenbest" >
                         <a rel="noopener noreferrer" target="blank"  >
                             <motion.div whileTap={{ scale: 1.2 }} >
-                                <Image alt='github' src={require('../images/github.png')} height='25' width='25' priority layout='intrinsic' unoptimized={IMG_UNOPTIMIZE} />
+                                <Github height={20} width={20} />
                             </motion.div></a>
 
                     </Link>

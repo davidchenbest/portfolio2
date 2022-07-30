@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import Popup from './Popup'
 import Image from 'next/image'
+import Github from 'components/lib/Github'
 const { IMG_UNOPTIMIZE } = process.env
 
 export default function Section({ data }) {
@@ -21,11 +22,13 @@ export default function Section({ data }) {
                 <h3>{meta.title}</h3>
                 <p>{meta.description}</p>
                 <div className='techDes'>
-                    <div>{meta.tech}</div>
-                    <a rel="noopener noreferrer" target="blank" href={meta.link} id='inventory app' ><i className="material-icons">&#xe879;</i></a>
-                    {githubLink && <a rel="noopener noreferrer" target="blank" href={githubLink} id='github' >
-                        <Image alt='github' src={require('../../../images/github.png')} height='25' width='25' unoptimized={IMG_UNOPTIMIZE} />
-                    </a>}
+                    <p>{meta.tech}</p>
+                    <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '.5rem' }}>
+                        <a rel="noopener noreferrer" target="blank" href={meta.link} id='inventory app' ><i className="material-icons">&#xe879;</i></a>
+                        {githubLink && <a rel="noopener noreferrer" target="blank" href={githubLink} id='github' >
+                            <Github />
+                        </a>}
+                    </div>
                 </div>
             </motion.div>
             {popup && <Popup imgs={imgs} togglePopup={togglePopup} popData={{ title: meta.title, link: meta.link }} summary={summary} />}

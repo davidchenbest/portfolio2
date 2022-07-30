@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import Github from 'components/lib/Github'
 const { IMG_UNOPTIMIZE } = process.env
 
 const categories = [
@@ -46,7 +47,7 @@ export default function OtherProjects() {
                                 : <span>{app.name}</span>
                             }
                             <a rel="noopener noreferrer" target="_blank" href={app.gitLink} id="gitIcon" >
-                                <Image alt='github' height={25} width={25} src={require('../../images/github.png')} unoptimized={IMG_UNOPTIMIZE} />
+                                <Github />
                             </a>
                         </div>)}
                     </div>
