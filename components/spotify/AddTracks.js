@@ -24,7 +24,7 @@ export default function AddTracks({ playlist_id }) {
     }
     return <section>
         <form >
-            <Input value={search} onChange={(e) => setSearch(e.target.value)} />
+            <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder='search for a track' />
             <Button name='search' onClick={submit} />
         </form>
         <ol>
