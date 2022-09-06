@@ -4,13 +4,29 @@ import Textarea from "components/lib/Textarea"
 import Loading from "components/Loading"
 import Image from "next/image"
 import { useRouter } from "next/router"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 
-export default function BulkImport({ playlist_id }) {
+export default function BulkImport({ playlist_id, existingItems }) {
     const router = useRouter();
     const [tracks, setTracks] = useState('')
     const [pendingItems, setPendingItems] = useState([])
     const [isSearch, setIsSearch] = useState()
+
+    const existingTracks = useMemo(() => {
+        const set = new Set()
+        for (const item of existingItems) {
+            set.add(item.track.uri)
+        }
+        return set
+    }, [existingItems])
+
+    const existingPendings = useMemo(() => {
+        const set = new Set()
+        for (const item of pendingItems) {
+            set.add(item.uri)
+        }
+        return set
+    }, [pendingItems])
 
     const refreshData = async () => {
         await router.replace(router.asPath);
@@ -28,11 +44,12 @@ export default function BulkImport({ playlist_id }) {
                 },
                 body: JSON.stringify({ tracks: cleanTracks })
             })
-            const items = await res.json()
+            const items = (await res.json()).filter(({ uri }) => !existingTracks.has(uri) && !existingPendings.has(uri))
+
             setPendingItems(pre => [...pre, ...items])
             setTracks('')
         } catch (error) {
-
+            console.log(error);
         }
         finally {
             setIsSearch(false)

@@ -50,7 +50,7 @@ export default function Playlist({ data, error }) {
     return <section>
         <h1>{data.name}</h1>
         <AddTracks playlist_id={data.id} />
-        <BulkImport playlist_id={data.id} />
+        <BulkImport playlist_id={data.id} existingItems={data?.tracks?.items} />
         <div style={{ display: 'flex', gap: '.5rem' }}>
             <Button name={edit ? 'done' : 'edit'} onClick={() => setEdit(pre => !pre)} />
             {Object.keys(checked).length ? <Button name={deleting ? 'Deleting' : 'Delete'} onClick={deleteTracks} disabled={deleting} /> : null}
