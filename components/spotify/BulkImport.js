@@ -57,6 +57,10 @@ export default function BulkImport({ playlist_id }) {
         finally {
         }
     }
+
+    const deleteItem = (i) => {
+        setPendingItems(pre => [...pre].filter((_, index) => i != index))
+    }
     return <section>
         {pendingItems.length ? <><h2>Items to add</h2><Button name='add' onClick={addItems} /></> : null}
         {pendingItems.map(({ album, uri, name }, i) => {
@@ -64,6 +68,7 @@ export default function BulkImport({ playlist_id }) {
             return <div key={i} style={{ display: 'flex', gap: '.5rem' }}>
                 <Image src={images[images.length - 1].url} alt={name} height='30' width='30' layout="fixed" />
                 <h4>{name}</h4>
+                <Button name='x' onClick={() => deleteItem(i)} />
             </div>
         })}
         <form >
