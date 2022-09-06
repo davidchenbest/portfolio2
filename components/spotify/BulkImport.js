@@ -1,6 +1,7 @@
 import Button from "components/lib/Button"
 import Input from "components/lib/Input"
 import Textarea from "components/lib/Textarea"
+import Loading from "components/Loading"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { useState } from "react"
@@ -9,23 +10,33 @@ export default function BulkImport({ playlist_id }) {
     const router = useRouter();
     const [tracks, setTracks] = useState('')
     const [pendingItems, setPendingItems] = useState([])
+    const [isSearch, setIsSearch] = useState()
 
     const refreshData = async () => {
         await router.replace(router.asPath);
     }
     const submit = async (e) => {
-        e.preventDefault()
-        const cleanTracks = tracks.split(',').map(track => track.trim())
-        const res = await fetch(`/api/spotify/search`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ tracks: cleanTracks })
-        })
-        const items = await res.json()
-        setPendingItems(pre => [...pre, ...items])
-        setTracks('')
+        try {
+            e.preventDefault()
+            if (!tracks.length) return
+            setIsSearch(true)
+            const cleanTracks = tracks.split(',').map(track => track.trim())
+            const res = await fetch(`/api/spotify/search`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ tracks: cleanTracks })
+            })
+            const items = await res.json()
+            setPendingItems(pre => [...pre, ...items])
+            setTracks('')
+        } catch (error) {
+
+        }
+        finally {
+            setIsSearch(false)
+        }
     }
     const addItems = async () => {
         try {
@@ -57,7 +68,9 @@ export default function BulkImport({ playlist_id }) {
         })}
         <form >
             <Textarea value={tracks} onChange={e => setTracks(e.target.value)} placeholder={`tracks separated by comma (,)\nex: one, two, three`} />
-            <Button name='search' onClick={submit} />
+            <Button onClick={submit} disabled={isSearch} >
+                {isSearch ? <Loading name='Searching' /> : 'Search'}
+            </Button>
         </form>
 
 
