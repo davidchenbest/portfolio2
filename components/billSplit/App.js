@@ -68,7 +68,7 @@ export default function App() {
     return <>
         <div className="flex flex-col gap-2 p-4">
             <h1 className="text-3xl font-bold">Payment Split</h1>
-            {errorM && <p>{errorM}</p>}
+            {errorM && <p className="text-red-500">{errorM}</p>}
             <form onSubmit={formSubmit} className="flex flex-col gap-2">
                 <div><Input type='text' name='name' placeholder='name' value={name} onChange={(e) => setName(e.target.value)} /></div>
                 <span style={{ display: 'flex', gap: '.5rem' }}>
