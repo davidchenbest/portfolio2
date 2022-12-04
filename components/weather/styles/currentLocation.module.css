@@ -1,0 +1,28 @@
+.currentLocationCon {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+.currentLocationCon #name {
+  font-size: 1.5em;
+}
+
+.useCurrentCon {
+  position: relative;
+}
+
+.useCurrentCon button {
+  font-size: 1em;
+}
+
+.useCurrentCon .helper {
+  font-size: 0.8em;
+  white-space: nowrap;
+  position: absolute;
+  padding: 0.25em;
+  top: 0;
+  background-color: lightgray;
+  border-radius: 5px;
+}

@@ -1,0 +1,38 @@
+.video {
+    border: 1px solid lightgray;
+    width: 100%;
+    border-radius: 5px;
+    padding: 0.25rem;
+}
+
+.userVideoCon {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    position: relative;
+}
+
+.controls {
+    display: none;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: transparent;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+    gap: 1rem;
+}
+
+.userVideoCon:hover .controls {
+    display: flex;
+}
+
+.name {
+    top: 0.25rem;
+    left: 0.25rem;
+    background-color: lightgrey;
+    padding: 0.1rem 0.2rem;
+    border-radius: 5px;
+    position: absolute;
+}

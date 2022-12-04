@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React, { useEffect, useState, useCallback } from 'react'
 // import '../../css/navigator.css'
+const { IMG_UNOPTIMIZE } = process.env
 
 export default function Navigator({ currentPhoto, singleState }) {
     const [currentIndex, setCurrentIndex] = useState(0)
@@ -44,7 +45,7 @@ export default function Navigator({ currentPhoto, singleState }) {
             <i className="material-icons" id='exit' onClick={e => exitClick(e)}>&#xe5cd;</i>
             <i className="material-icons" id='left' onClick={e => setStateLeftRight(e, -1)}>&#xe5cb;</i>
             <i className="material-icons" id='right' onClick={e => setStateLeftRight(e, 1)}>&#xe5cc;</i>
-            {currentLink && <Image src={currentLink} alt={currentLink} layout='fill' objectFit='contain' />}
+            {currentLink && <Image src={currentLink} alt={currentLink} layout='fill' objectFit='contain' unoptimized={IMG_UNOPTIMIZE} />}
         </div>
     )
 }

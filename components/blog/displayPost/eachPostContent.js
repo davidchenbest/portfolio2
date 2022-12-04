@@ -1,3 +1,4 @@
+import Button from 'components/lib/Button'
 import React, { useState } from 'react'
 const LIMIT = process.env.BLOG_WORD_LIMIT
 function underLimit(str) {
@@ -17,7 +18,7 @@ export default function EachPostContent({ content }) {
         return (
             <>
                 {content.substring(0, LIMIT)}...
-                <button className='button' onClick={showEntire}>More</button>
+                <Button name='More' onClick={showEntire} />
             </>
         )
     }

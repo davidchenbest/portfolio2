@@ -5,6 +5,6 @@ export default function ActiveLink({ href, name }) {
     const { asPath } = useRouter()
 
     return (
-        <Link href={href}><a className={href === asPath && 'active'}>{name}</a></Link>
+        <Link href={href}><a className={href === asPath ? 'active' : null}>{name}</a></Link>
     )
 }

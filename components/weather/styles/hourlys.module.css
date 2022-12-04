@@ -1,0 +1,15 @@
+.hourlyCon {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.hourlyCon p:first-child {
+  font-weight: bold;
+}
+
+.hourlyCon img {
+  height: 2.5em;
+}

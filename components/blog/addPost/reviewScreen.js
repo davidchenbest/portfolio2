@@ -1,12 +1,13 @@
+import Button from 'components/lib/Button'
 import React from 'react'
 
-const ReviewScreen = ({type,title,goBack})=>{
-    return(
+const ReviewScreen = ({ type, title, goBack }) => {
+    return (
         <div>
             <p>
-            {title} {type} has been submitted for review
+                {title} {type} has been submitted for review
             </p>
-            <button onClick={goBack}>Back</button>
+            <Button name='Back' onClick={goBack} />
         </div>
     )
 }

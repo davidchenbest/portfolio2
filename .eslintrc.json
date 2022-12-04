@@ -8,6 +8,7 @@
         "maxBOF": 0,
         "maxEOF": 0
       }
-    ]
+    ],
+    "import/no-anonymous-default-export": 0
   }
 }

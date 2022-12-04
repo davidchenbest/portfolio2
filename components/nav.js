@@ -4,6 +4,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import ActiveLink from './ActiveLink'
+import Github from './lib/Github'
+const { IMG_UNOPTIMIZE } = process.env
 
 export default function Nav() {
     const { asPath } = useRouter()
@@ -20,7 +22,7 @@ export default function Nav() {
         //     )
         // }
         return (
-            <li id='nav-login' ><a href='/login'>Login</a></li>
+            <li id='nav-login' ><Link href='/login'><a >Login</a></Link></li>
         )
     }
 
@@ -41,9 +43,6 @@ export default function Nav() {
                 </Link>
             </motion.div>
             <ul className='nav-list'>
-                {asPath !== '/' &&
-                    <><li><ActiveLink href={'/blog'} name='Blog' /></li>
-                        <li><ActiveLink href={'/gallery'} name='Gallery' /></li></>}
                 <li >
                     <Link href='https://drive.google.com/file/d/1GkDC0JBxphOvPf7A27iR5U8qU5E6iuCv/view?usp=sharing'>
                         <a rel="noopener noreferrer" target='_blank' >Resume</a>
@@ -53,7 +52,7 @@ export default function Nav() {
                     <Link href="https://github.com/davidchenbest" >
                         <a rel="noopener noreferrer" target="blank"  >
                             <motion.div whileTap={{ scale: 1.2 }} >
-                                <Image alt='github' src={require('../images/github.png')} height='25' width='25' priority layout='intrinsic' />
+                                <Github height={20} width={20} />
                             </motion.div></a>
 
                     </Link>
@@ -64,7 +63,7 @@ export default function Nav() {
             </ul>
 
 
-            <span className="material-icons menu-icon" onClick={() => displayMenu()}>&#xe5d2;</span>
+            <span className="menu-icon" onClick={() => displayMenu()}>[]</span>
 
 
         </nav >

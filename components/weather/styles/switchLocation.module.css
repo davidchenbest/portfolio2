@@ -1,0 +1,19 @@
+.locationForm {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.locationForm input,
+.locationForm select {
+  font-size: 1em;
+  padding: 0.25em;
+  border-radius: 5px;
+}
+
+
+@media (max-width: 400px) {
+  .locationForm input[type='text'] {
+    flex-grow: 1;
+  }
+}

@@ -16,20 +16,6 @@
   padding: 15px;
 }
 
-.button {
-  font-size: 16px;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: black;
-  white-space: nowrap;
-}
-
-.button:hover {
-  background-color: #385898;
-  color: white;
-}
-
 .preserveBreak {
   white-space: pre-line;
   /* preserve line break */
@@ -47,30 +33,46 @@
 }
 
 #post-form {
-  margin: auto;
-  margin-top: 20px;
+  margin: 0 auto 2rem auto;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-#post-form #add-post {
-  font-size: large;
+.button {
   border-radius: 5px;
-  margin-bottom: 15px;
   padding: 3px 15px;
   border: 1px solid lightgrey;
 }
 
-#post-form #add-post:hover {
-  background-color: lightgrey;
+.input {
+  padding: 5px;
+  font-size: 1rem;
+  /* text-align: center; */
+  border: 1px solid lightgrey;
+  border-bottom: none;
+  border-radius: 5px;
+}
+
+.textarea {
+  font-size: 1rem;
+  border-radius: 5px;
+  min-width: 300px;
+  min-height: 5rem;
+  padding: 5px 10px;
+  height: 50px;
+  border: 1px solid lightgrey;
+}
+
+.button:hover {
+  background-color: #385898;
+  color: white;
 }
 
 #post-form form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
 }
 
 #post-form-title {
@@ -80,15 +82,6 @@
   border: 1px solid lightgrey;
   border-bottom: none;
   border-radius: 5px;
-}
-
-#post-form-ta {
-  border-radius: 5px;
-  font-size: 20px;
-  padding: 5px 10px;
-  resize: none;
-  height: 100px;
-  border: 1px solid lightgrey;
 }
 
 #post-form-btn-con {
@@ -129,20 +122,6 @@
   flex-direction: center;
 }
 
-.checkEmailForm input {
-  padding: 5px;
-  font-size: 20px;
-  text-align: center;
-  border: 1px solid lightgrey;
-  border-bottom: none;
-  border-radius: 5px;
-}
-
-.checkEmailForm button {
-  width: 80px;
-  text-align: center;
-}
-
 .checkEmailForm button:not(:last-child) {
   margin-right: 5px;
 }
@@ -153,14 +132,12 @@
   align-items: center;
   padding: 0 30px;
   width: 100%;
+  gap: 5rem
 }
 
 .eachPost {
   padding: 10px;
   background-color: lightyellow;
-
-  margin-bottom: 15px;
-
   width: 100%;
 }
 
@@ -243,15 +220,6 @@
   align-items: flex-end;
 }
 
-.commentForm textarea {
-  border-radius: 5px;
-  padding: 5px 10px;
-  width: 80%;
-  height: 50px;
-  border: 1px solid lightgrey;
-  margin-right: 5px;
-}
-
 .date {
   margin-right: 10px;
   margin-left: auto;
@@ -268,11 +236,11 @@
 nav {
   padding: 0.5rem;
   display: flex;
-  position: sticky;
-  top: 0;
+  /* position: sticky; */
+  /* top: 0; */
   width: 100%;
   background-color: white;
-  z-index: 2;
+  /* z-index: 2; */
 }
 
 #github img {
@@ -300,7 +268,7 @@ nav {
   margin-right: 5px;
 }
 
-.nav-list li a {
+.nav-list a {
   border-radius: 5px;
   white-space: nowrap;
 }
@@ -308,13 +276,13 @@ nav {
 .nav-list li a:not(#logo) {
   text-align: center;
   display: block;
-  width: 90px;
+  min-width: 90px;
   padding: 10px;
   font-size: 20px;
   color: black;
 }
 
-.nav-list li a:not(#logo):not(.active):hover {
+.nav-list a:not(#logo):not(.active):hover {
   background-color: lightgrey;
 }
 
@@ -337,6 +305,22 @@ nav {
 }
 
 /* END Nav */
+
+/* Sub Nav */
+.sub-nav {
+  display: flex;
+  justify-content: center;
+  margin: .5rem;
+  margin-bottom: 1rem;
+  gap: 0.25rem;
+}
+
+.sub-nav a {
+  font-size: .75rem;
+  color: black;
+  text-decoration: none;
+  padding: .15rem .3rem;
+}
 
 /* Login */
 #login {

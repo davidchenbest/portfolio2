@@ -1,0 +1,43 @@
+.dayCon {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 4rem;
+  background-color: lightblue;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.dayCon .dayTempCon {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0.5em;
+}
+
+.date {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.hourlysCon {
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+  gap: 1.5rem;
+}
+
+.maxMinTemp {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.maxTemp {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.minTemp {
+  color: gray;
+}

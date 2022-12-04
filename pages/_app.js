@@ -6,15 +6,15 @@ import '../styles/gallery.css'
 import '../styles/navigator.css'
 import '../styles/photosCon.css'
 import Nav from '../components/nav'
-import Head from 'next/head'
+import SubNav from '../components/subNav/SubNav'
+import Footer from '../components/Footer'
 
 function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
   return (<>
-    <Head>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    </Head>
     <Nav />
+    <SubNav />
     <Component {...pageProps} />
+    <Footer />
   </>)
 }
 

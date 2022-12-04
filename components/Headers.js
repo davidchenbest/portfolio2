@@ -2,9 +2,10 @@ import Head from "next/head";
 import META_DATA from '../meta-data'
 
 export default function Headers({ name }) {
-    const title = META_DATA[name]['title']
-    const description = META_DATA[name]['description']
-    const keywords = META_DATA[name]['keywords']
+    const data = META_DATA[name] ? META_DATA[name] : {}
+    const title = data['title']
+    const description = data['description']
+    const keywords = data['keywords']
     return (
         <Head>
             {title &&

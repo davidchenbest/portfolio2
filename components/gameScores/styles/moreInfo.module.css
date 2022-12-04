@@ -1,0 +1,40 @@
+.moreInfoToggle {
+    cursor: pointer;
+    position: absolute;
+    right: -0.25rem;
+    bottom: -0.25rem;
+    font-size: 0.8rem;
+    border-radius: 50%;
+    padding: 0 0.25rem;
+    border: 1px solid lightgrey;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}
+
+.moreInfoToggle:hover {
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    background-color: lightgray;
+}
+
+/* .periods {
+    grid-column: 2 / span 1;
+    justify-content: center;
+} */
+
+.periods {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.leader {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+}
+
+.away {
+    grid-column: 1 / span 1;
+}
+
+.home {
+    grid-column: 3 / span 1;
+}
