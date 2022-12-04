@@ -44,6 +44,12 @@ const data = {
         keywords: `calendar, meet`,
     },
 
+    'bill-split': {
+        title: `Split Bills`,
+        description: `split bills with others payers or participants`,
+        keywords: `split, bill`,
+    },
+
 }
 
 export default data
