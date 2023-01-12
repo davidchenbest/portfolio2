@@ -4,7 +4,7 @@ const data = {
     index: {
         title: TITLE_NAME,
         description: 'Jia Chen is a software engineer from New York.',
-        keywords: 'Software Engineer, Web, Developer, JavaScript, React, New York',
+        keywords: 'Jia Chen, Software Engineer, Web, Developer, JavaScript, React, Node, New York',
     },
     blog: {
         title: `Blog by ${TITLE_NAME}`,

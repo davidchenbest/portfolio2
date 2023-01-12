@@ -8,12 +8,13 @@ const { IMG_UNOPTIMIZE } = process.env
 const categories = [
     {
         name: 'Projects', apps: [
-            { name: 'Blog', link: '/projects/blog', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/blog' },
+            // { name: 'Blog', link: '/projects/blog', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/blog' },
             { name: 'Gallery', link: '/projects/gallery', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/gallery' },]
     },
     {
         name: 'Tools', apps: [
             { name: 'Video Chat', link: '/tools/videoroom', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/webrtc' },
+            { name: 'Bill Split', link: '/bill-split', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/billSplit' },
             { name: 'Daily Wallpaper', gitLink: 'https://github.com/davidchenbest/daily-wallpaper' },
             { name: 'Flashcard', link: 'https://flashcard-jia.web.app/', gitLink: 'https://github.com/davidchenbest/flashcards-app' },]
     },
