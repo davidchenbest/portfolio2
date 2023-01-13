@@ -1,0 +1,21 @@
+const { useEffect, useState } = require("react");
+
+export function useTimer(time) {
+    const [t, setT] = useState()
+    useEffect(() => {
+        if (time) setT(time)
+    }, [time])
+
+    useEffect(() => {
+        let interval
+        if (t > 0) {
+            console.log(t);
+            interval = setInterval(() => {
+                setT(pre => pre - 1)
+            }, 1000)
+        }
+        return () => clearInterval(interval)
+    }, [t])
+
+    return t
+}
