@@ -80,11 +80,14 @@ export default function App() {
     const time = useTimer(between)
 
     const getLink = () => {
-        const { pathname, asPath } = router
-        const query = { start: dateFormat(date), end: dateFormat(date2) }
-        if (title) query.title = title
-        router.replace({ pathname, query })
-        setLink(window.location.origin + asPath);
+        const params = new URLSearchParams()
+        const query = { start: dateFormat(date), end: dateFormat(date2), title }
+        for (const key in query) {
+            const value = query[key]
+            if (value) params.set(key, value)
+        }
+        const { origin, pathname } = window.location
+        setLink(origin + pathname + '?' + params.toString());
     }
 
     const setStartToCurrent = () => {
