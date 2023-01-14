@@ -7,15 +7,26 @@ import { useEffect, useRef, useState } from "react";
 
 // DONE user can select day and app will display how long till
 // fix get link error when clicked twice
+// add effects when timer is up
 
-function datetimeLocal() {
-    const now = new Date();
-    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-    return now.toISOString().slice(0, 16)
+function dateFormat(d) {
+    // 2023-01-14T09:07
+    const year = d.getFullYear()
+    const month = setAtLeast2Char(d.getMonth() + 1)
+    const dateNum = setAtLeast2Char(d.getDate())
+    const hour = setAtLeast2Char(d.getHours())
+    const min = setAtLeast2Char(d.getMinutes())
+    return `${year}-${month}-${dateNum}T${hour}:${min}`
+
+    function setAtLeast2Char(str) {
+        str = str.toString()
+        if (str.length < 2) return '0' + str
+        return str
+    }
 }
 
-function useDateTime() {
-    const [dvalue, setDvalue] = useState(datetimeLocal())
+function useDateTime(date) {
+    const [dvalue, setDvalue] = useState(date ? date : new Date())
     return [dvalue, setDvalue]
 }
 
@@ -23,7 +34,7 @@ function calTimeBetween(d1, d2) {
     const date1 = new Date(d1)
     const date2 = new Date(d2)
     let diff = (date2.getTime() - date1.getTime()) / 1000 //seconds
-    return diff
+    return parseInt(diff)
 }
 
 function timeToString(diff) {
@@ -53,11 +64,12 @@ export default function App() {
     const [title, setTitle] = useState()
 
 
+    const CurrentDate = useRef(new Date())
     useEffect(() => {
         const { pathname, query } = router
         const { start, end, title } = query
-        if (start) changeDate(start)
-        if (end) changeDate2(end)
+        if (start) changeDate(new Date(start))
+        if (end) changeDate2(new Date(end))
         if (title) setTitle(title)
     }, [changeDate, changeDate2, router])
 
@@ -69,14 +81,14 @@ export default function App() {
 
     const getLink = () => {
         const { pathname, asPath } = router
-        const query = { start: date, end: date2 }
+        const query = { start: dateFormat(date), end: dateFormat(date2) }
         if (title) query.title = title
         router.replace({ pathname, query })
         setLink(window.location.origin + asPath);
     }
 
     const setStartToCurrent = () => {
-        changeDate(datetimeLocal())
+        changeDate(CurrentDate.current)
         const { pathname, query } = router
         const { start } = query
         console.log(query);
@@ -91,9 +103,9 @@ export default function App() {
             <div className="flex gap-5">
                 <label>Start</label>
                 <Button onClick={setStartToCurrent}>Current</Button>
-                <input type='datetime-local' onChange={e => changeDate(e.target.value)} value={date} />
+                <input type='datetime-local' onChange={e => changeDate(new Date(e.target.value))} value={dateFormat(date)} />
                 <label>End</label>
-                <input type='datetime-local' onChange={e => changeDate2(e.target.value)} value={date2} />
+                <input type='datetime-local' onChange={e => changeDate2(new Date(e.target.value))} value={dateFormat(date2)} />
                 {between && <>
                     <Button onClick={getLink}>Get Link</Button>
                 </>}
