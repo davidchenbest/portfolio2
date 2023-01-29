@@ -5,7 +5,7 @@ const subNav = {
     '/nba': ['/score', '/standings'],
     // "/projects": ['/blog', '/gallery'],
     "/projects": ['/gallery'],
-    '/tools': [, '/videoroom', '/weather'],
+    '/tools': [, '/videoroom', '/weather', '/bill-split', '/countdown'],
     '/concepts': [, '/sierpinski']
 }
 
