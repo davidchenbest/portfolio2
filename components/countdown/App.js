@@ -2,6 +2,7 @@ import Button from "components/lib/Button";
 import { useTimer } from "modules/hooks/useTimer";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
+import Title from "./Title";
 
 
 // DONE user can select day and app will display how long till
@@ -76,7 +77,6 @@ export default function App() {
         const one = isCurrent ? newDate : date
         const two = isCurrent2 ? newDate : date2
         const diff = calTimeBetween(one, two)
-        console.log(diff, one, two, isCurrent, isCurrent2);
         setBetween(diff)
     }, [date, date2, isCurrent, isCurrent2])
 
@@ -98,12 +98,12 @@ export default function App() {
 
 
     return (
-        <div className="flex flex-col gap-5">
-            {title && <h2>{title}</h2>}
+        <div className="flex flex-col gap-5 p-2">
+            <Title title={title} setTitle={setTitle} />
             <div className="flex-col gap-5">
                 <DateSelector name='Start' date={date} changeDate={changeDate} isCurrent={isCurrent} setIsCurrent={setIsCurrent} />
                 <DateSelector name='End' date={date2} changeDate={changeDate2} isCurrent={isCurrent2} setIsCurrent={setIsCurrent2} />
-                {between && <>
+                {!!between && <>
                     <Button onClick={getLink}>Get Link</Button>
                 </>}
             </div>
@@ -114,7 +114,7 @@ export default function App() {
 }
 
 function DateSelector({ name, isCurrent, date, changeDate, setIsCurrent }) {
-    return <div className="flex gap-3 p-2 items-center">
+    return <div className="flex gap-3 items-center">
         <h3>{name}</h3>
         <label>
             Current
