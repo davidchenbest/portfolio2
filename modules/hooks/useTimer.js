@@ -3,7 +3,7 @@ const { useEffect, useState } = require("react");
 export function useTimer(time) {
     const [t, setT] = useState()
     useEffect(() => {
-        if (time) setT(time)
+        setT(time)
     }, [time])
 
     useEffect(() => {
