@@ -1,6 +1,6 @@
-import Headers from '../../components/Headers';
+import Headers from '../../../components/Headers';
 
-import App from "../../components/billSplit/App";
+import App from "../../../components/billSplit/App";
 
 export default function Split({ data, error }) {
     return <>

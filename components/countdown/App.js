@@ -1,12 +1,11 @@
 import Button from "components/lib/Button";
 import { useTimer } from "modules/hooks/useTimer";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
 
 // DONE user can select day and app will display how long till
-// fix get link error when clicked twice
+// DONE fix get link error when clicked twice
 // add effects when timer is up
 
 function dateFormat(d) {
@@ -30,9 +29,7 @@ function useDateTime(date) {
     return [dvalue, setDvalue]
 }
 
-function calTimeBetween(d1, d2) {
-    const date1 = new Date(d1)
-    const date2 = new Date(d2)
+function calTimeBetween(date1, date2) {
     let diff = (date2.getTime() - date1.getTime()) / 1000 //seconds
     return parseInt(diff)
 }
@@ -62,26 +59,35 @@ export default function App() {
     const [between, setBetween] = useState()
     const [link, setLink] = useState()
     const [title, setTitle] = useState()
+    const [isCurrent, setIsCurrent] = useState(true)
+    const [isCurrent2, setIsCurrent2] = useState()
 
 
-    const CurrentDate = useRef(new Date())
     useEffect(() => {
-        const { pathname, query } = router
+        const { query } = router
         const { start, end, title } = query
-        if (start) changeDate(new Date(start))
-        if (end) changeDate2(new Date(end))
+        if (start) changeDate(new Date(start)) || setIsCurrent(false)
+        if (end) changeDate2(new Date(end)) || setIsCurrent2(false)
         if (title) setTitle(title)
-    }, [changeDate, changeDate2, router])
+    }, [changeDate, changeDate2, router, setIsCurrent, setIsCurrent2])
 
     useEffect(() => {
-        setBetween(calTimeBetween(date, date2))
-    }, [date, date2])
+        const newDate = new Date()
+        const one = isCurrent ? newDate : date
+        const two = isCurrent2 ? newDate : date2
+        const diff = calTimeBetween(one, two)
+        console.log(diff, one, two, isCurrent, isCurrent2);
+        setBetween(diff)
+    }, [date, date2, isCurrent, isCurrent2])
 
     const time = useTimer(between)
 
     const getLink = () => {
         const params = new URLSearchParams()
-        const query = { start: dateFormat(date), end: dateFormat(date2), title }
+        const query = {
+            start: !isCurrent && dateFormat(date),
+            end: !isCurrent2 && dateFormat(date2), title
+        }
         for (const key in query) {
             const value = query[key]
             if (value) params.set(key, value)
@@ -90,25 +96,13 @@ export default function App() {
         setLink(origin + pathname + '?' + params.toString());
     }
 
-    const setStartToCurrent = () => {
-        changeDate(CurrentDate.current)
-        const { pathname, query } = router
-        const { start } = query
-        console.log(query);
-        if (!start) return
-        delete query['start']
-        router.replace({ pathname, query })
-    }
 
     return (
         <div className="flex flex-col gap-5">
             {title && <h2>{title}</h2>}
-            <div className="flex gap-5">
-                <label>Start</label>
-                <Button onClick={setStartToCurrent}>Current</Button>
-                <input type='datetime-local' onChange={e => changeDate(new Date(e.target.value))} value={dateFormat(date)} />
-                <label>End</label>
-                <input type='datetime-local' onChange={e => changeDate2(new Date(e.target.value))} value={dateFormat(date2)} />
+            <div className="flex-col gap-5">
+                <DateSelector name='Start' date={date} changeDate={changeDate} isCurrent={isCurrent} setIsCurrent={setIsCurrent} />
+                <DateSelector name='End' date={date2} changeDate={changeDate2} isCurrent={isCurrent2} setIsCurrent={setIsCurrent2} />
                 {between && <>
                     <Button onClick={getLink}>Get Link</Button>
                 </>}
@@ -117,4 +111,15 @@ export default function App() {
             <h3 className="text-5xl">{timeToString(time)}</h3>
         </div >
     )
+}
+
+function DateSelector({ name, isCurrent, date, changeDate, setIsCurrent }) {
+    return <div className="flex gap-3 p-2 items-center">
+        <h3>{name}</h3>
+        <label>
+            Current
+        </label>
+        <input type='checkbox' checked={isCurrent} onChange={() => setIsCurrent(pre => !pre)} />
+        {!isCurrent && <input type='datetime-local' disabled={isCurrent} onChange={e => changeDate(new Date(e.target.value))} value={dateFormat(date)} />}
+    </div>
 }

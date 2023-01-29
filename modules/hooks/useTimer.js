@@ -8,14 +8,12 @@ export function useTimer(time) {
 
     useEffect(() => {
         let interval
-        if (t > 0) {
-            console.log(t);
+        if (t != 0) {
             interval = setInterval(() => {
                 setT(pre => pre - 1)
             }, 1000)
         }
         return () => clearInterval(interval)
     }, [t])
-
     return t
 }
