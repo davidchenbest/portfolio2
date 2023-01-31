@@ -59,7 +59,7 @@ export default function App() {
     const [date2, changeDate2] = useDateTime()
     const [between, setBetween] = useState()
     const [link, setLink] = useState()
-    const [title, setTitle] = useState()
+    const [title, setTitle] = useState('')
     const [isCurrent, setIsCurrent] = useState(true)
     const [isCurrent2, setIsCurrent2] = useState()
 
@@ -119,7 +119,7 @@ function DateSelector({ name, isCurrent, date, changeDate, setIsCurrent }) {
         <label>
             Current
         </label>
-        <input type='checkbox' checked={isCurrent} onChange={() => setIsCurrent(pre => !pre)} />
+        <input type='checkbox' checked={!!isCurrent} onChange={() => setIsCurrent(pre => !pre)} />
         {!isCurrent && <input type='datetime-local' disabled={isCurrent} onChange={e => changeDate(new Date(e.target.value))} value={dateFormat(date)} />}
     </div>
 }
