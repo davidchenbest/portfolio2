@@ -7,33 +7,33 @@ const data = {
         keywords: 'Jia Chen, Software Engineer, Web, Developer, JavaScript, React, Node, New York',
     },
     blog: {
-        title: `Blog by ${TITLE_NAME}`,
+        title: `Blog by`,
         description: 'Blog app for expressing thoughtful ideas.',
         keywords: 'Blog, Idea, Thought',
     },
     gallery: {
-        title: `Gallery by ${TITLE_NAME}`,
+        title: `Gallery`,
         description: 'Gallery app for displaying photographic photos.',
         keywords: 'Gallery, Photo, Art',
     },
     'nba scores': {
-        title: `Nba Scores by ${TITLE_NAME}`,
+        title: `Nba Scores`,
     },
     'nba standings': {
-        title: `Nba Standings by ${TITLE_NAME}`,
+        title: `Nba Standings`,
     },
     'videoroom': {
-        title: `Videoroom by ${TITLE_NAME}`,
+        title: `Videoroom`,
         description: 'Video chat app for connecting with friend and family.',
         keywords: 'Videochat, friend, family',
     },
     'weather': {
-        title: `Weather by ${TITLE_NAME}`,
+        title: `Weather`,
         description: 'Weather app for checking current, hourly, and forecast weather.',
         keywords: 'weather, forecast',
     },
     'sierpinski': {
-        title: `Sierpinski by ${TITLE_NAME}`,
+        title: `Sierpinski`,
         description: 'Sierpinski demonstration app for visualizing pattern.',
         keywords: `sierpinski, triangle`,
     },
@@ -48,6 +48,12 @@ const data = {
         title: `Split Bills`,
         description: `split bills with others payers or participants`,
         keywords: `split, bill`,
+    },
+
+    'countdown': {
+        title: `Countdown`,
+        description: `Calculate days, hours, minutes and seconds ticking down to 0`,
+        keywords: `countdown, day, hour, minute, second, between dates,`,
     },
 
 }

@@ -98,8 +98,9 @@ export default function App() {
 
 
     return (
-        <div className="flex flex-col gap-5 p-2">
-            <Title title={title} setTitle={setTitle} />
+        <div className="flex flex-col gap-5">
+            <h1 className="text-3xl font-bold">Countdown</h1>
+            < Title title={title} setTitle={setTitle} />
             <div className="flex-col gap-5">
                 <DateSelector name='Start' date={date} changeDate={changeDate} isCurrent={isCurrent} setIsCurrent={setIsCurrent} />
                 <DateSelector name='End' date={date2} changeDate={changeDate2} isCurrent={isCurrent2} setIsCurrent={setIsCurrent2} />
@@ -116,10 +117,11 @@ export default function App() {
 function DateSelector({ name, isCurrent, date, changeDate, setIsCurrent }) {
     return <div className="flex gap-3 items-center">
         <h3>{name}</h3>
-        <label>
-            Current
-        </label>
-        <input type='checkbox' checked={!!isCurrent} onChange={() => setIsCurrent(pre => !pre)} />
-        {!isCurrent && <input type='datetime-local' disabled={isCurrent} onChange={e => changeDate(new Date(e.target.value))} value={dateFormat(date)} />}
-    </div>
+        <span className="flex gap-1 items-baseline">
+            <label label htmlFor={name} > Current</label >
+            <input type='checkbox' id={name} checked={!!isCurrent} onChange={() => setIsCurrent(pre => !pre)} />
+        </span >
+        {!isCurrent && <input type='datetime-local' disabled={isCurrent} onChange={e => changeDate(new Date(e.target.value))} value={dateFormat(date)} />
+        }
+    </div >
 }
