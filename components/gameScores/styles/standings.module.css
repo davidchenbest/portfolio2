@@ -31,7 +31,8 @@
 }
 
 .tr:hover {
-    background-color: lightgray;
+    background-color: #385898;
+    color: white;
 }
 
 .td {

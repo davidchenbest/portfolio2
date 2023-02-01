@@ -71,10 +71,9 @@ a {
 }
 
 .port-screen .summary {
-  background-color: white;
+  background-color: #385898;
   padding: 1em;
   border-radius: 5px;
-  color: black;
   text-align: left;
 }
 

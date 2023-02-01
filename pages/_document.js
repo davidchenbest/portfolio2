@@ -6,7 +6,7 @@ export default function Document() {
             <Head>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
             </Head>
-            <body>
+            <body className='dark:bg-slate-600 dark:text-slate-200'>
                 <Main />
                 <NextScript />
             </body>

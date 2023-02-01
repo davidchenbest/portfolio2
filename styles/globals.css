@@ -16,6 +16,10 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+a {
+  color: inherit;
+}
+
 .wrapper {
   padding: 15px;
 }
@@ -243,7 +247,6 @@ nav {
   /* position: sticky; */
   /* top: 0; */
   width: 100%;
-  background-color: white;
   /* z-index: 2; */
 }
 
@@ -262,7 +265,6 @@ nav {
   white-space: nowrap;
   margin-right: 30px;
   margin-left: 15px;
-  color: black;
   font-size: 40px;
   font-weight: 700;
 }
@@ -283,16 +285,16 @@ nav {
   min-width: 90px;
   padding: 10px;
   font-size: 20px;
-  color: black;
 }
 
 .nav-list a:not(#logo):not(.active):hover {
-  background-color: lightgrey;
+  background-color: #385898;
+  color: white;
 }
 
 .nav-list .active {
   background-color: #385898;
-  color: white !important;
+  color: white;
 }
 
 #nav-login {
@@ -321,7 +323,6 @@ nav {
 
 .sub-nav a {
   font-size: .75rem;
-  color: black;
   text-decoration: none;
   padding: .15rem .3rem;
 }
