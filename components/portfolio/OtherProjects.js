@@ -30,15 +30,13 @@ const categories = [
     }
 ]
 
+
 export default function OtherProjects() {
-    const otherProject = (e) => {
-        let element = e.target.querySelector('a')
-        if (element) element.click()
-    }
+
     return (
         <div>
             <h2 className='second-title'>Other Apps</h2>
-            <div className='other-apps' onClick={(e) => otherProject(e)}>
+            <div className='other-apps' >
 
                 {categories.map(category => <Project key={category.name} category={category} />)}
 
@@ -47,12 +45,17 @@ export default function OtherProjects() {
     )
 }
 
+const projectClick = (e) => {
+    let element = e.target.querySelector('a')
+    if (element) element.click()
+}
+
 function Project({ category }) {
     const [limit, setLimit] = useState(3)
-    return <div>
+    return <div >
         <h3>{category.name}</h3>
         <div className='category'>
-            {category.apps.slice(0, limit).map((app) => <div className='otherApp' key={app.name}>
+            {category.apps.slice(0, limit).map((app) => <div className='otherApp' key={app.name} onClick={(e) => projectClick(e)}>
                 {app.link ?
                     <Link href={app.link}>
                         <a rel="noopener noreferrer" target={!app.link.startsWith('/') ? '_blank' : null} >
