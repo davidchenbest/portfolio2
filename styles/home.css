@@ -41,7 +41,6 @@ a {
   border-radius: 5px;
   padding: .5em;
   margin: 1em 0;
-  display: block;
 }
 
 .otherApp:hover {
@@ -243,11 +242,6 @@ a {
   grid-template-columns: repeat(auto-fill, minmax(200px, auto));
   gap: 1rem;
   flex-wrap: wrap;
-}
-
-.other-apps a,
-.other-apps span {
-  font-size: .9rem;
 }
 
 .more-about {

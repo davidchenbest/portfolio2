@@ -55,7 +55,7 @@ function Project({ category }) {
     return <div >
         <h3>{category.name}</h3>
         <div className='category'>
-            {category.apps.slice(0, limit).map((app) => <div className='otherApp' key={app.name} onClick={(e) => projectClick(e)}>
+            {category.apps.slice(0, limit).map((app) => <div className='otherApp flex justify-between' key={app.name} onClick={(e) => projectClick(e)}>
                 {app.link ?
                     <Link href={app.link}>
                         <a rel="noopener noreferrer" target={!app.link.startsWith('/') ? '_blank' : null} >
