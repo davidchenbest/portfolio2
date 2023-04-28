@@ -18,6 +18,8 @@ const categories = [
             { name: 'Countdown', link: '/tools/countdown', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/countdown' },
             { name: 'Bill Split', link: '/tools/bill-split', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/billSplit' },
             { name: 'Daily Wallpaper', gitLink: 'https://github.com/davidchenbest/daily-wallpaper' },
+            { name: 'Weather', link: '/tools/weather', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/weather' },
+            { name: 'Notes', link: 'https://jianotes.web.app/', gitLink: 'https://github.com/davidchenbest/note-app' },
             { name: 'Flashcard', link: 'https://flashcard-jia.web.app/', gitLink: 'https://github.com/davidchenbest/flashcards-app' },
         ]
     },
