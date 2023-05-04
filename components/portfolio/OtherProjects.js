@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import Github from 'components/lib/Github'
+import Button from 'components/lib/Button'
 const { IMG_UNOPTIMIZE } = process.env
 
 const categories = [
@@ -17,7 +18,10 @@ const categories = [
             { name: 'Countdown', link: '/tools/countdown', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/countdown' },
             { name: 'Bill Split', link: '/tools/bill-split', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/billSplit' },
             { name: 'Daily Wallpaper', gitLink: 'https://github.com/davidchenbest/daily-wallpaper' },
-            { name: 'Flashcard', link: 'https://flashcard-jia.web.app/', gitLink: 'https://github.com/davidchenbest/flashcards-app' },]
+            { name: 'Weather', link: '/tools/weather', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/weather' },
+            { name: 'Notes', link: 'https://jianotes.web.app/', gitLink: 'https://github.com/davidchenbest/note-app' },
+            { name: 'Flashcard', link: 'https://flashcard-jia.web.app/', gitLink: 'https://github.com/davidchenbest/flashcards-app' },
+        ]
     },
     {
         name: 'Concepts', apps: [
@@ -26,36 +30,45 @@ const categories = [
     }
 ]
 
+
 export default function OtherProjects() {
-    const otherProject = (e) => {
-        let element = e.target.querySelector('a')
-        if (element) element.click()
-    }
+
     return (
         <div>
             <h2 className='second-title'>Other Apps</h2>
-            <div className='other-apps' onClick={(e) => otherProject(e)}>
+            <div className='other-apps' >
 
-                {categories.map(category => <div key={category.name}>
-                    <h3>{category.name}</h3>
-                    <div className='category'>
-                        {category.apps.map((app) => <div className='otherApp' key={app.name}>
-                            {app.link ?
-                                <Link href={app.link}>
-                                    <a rel="noopener noreferrer" target={!app.link.startsWith('/') ? '_blank' : null} >
-                                        <span>{app.name}</span>
-                                    </a>
-                                </Link>
-                                : <span>{app.name}</span>
-                            }
-                            <a rel="noopener noreferrer" target="_blank" href={app.gitLink} id="gitIcon" >
-                                <Github />
-                            </a>
-                        </div>)}
-                    </div>
-                </div>)}
+                {categories.map(category => <Project key={category.name} category={category} />)}
 
             </div>
         </div>
     )
+}
+
+const projectClick = (e) => {
+    let element = e.target.querySelector('a')
+    if (element) element.click()
+}
+
+function Project({ category }) {
+    const [limit, setLimit] = useState(3)
+    return <div >
+        <h3>{category.name}</h3>
+        <div className='category'>
+            {category.apps.slice(0, limit).map((app) => <div className='otherApp flex justify-between' key={app.name} onClick={(e) => projectClick(e)}>
+                {app.link ?
+                    <Link href={app.link}>
+                        <a rel="noopener noreferrer" target={!app.link.startsWith('/') ? '_blank' : null} >
+                            <span>{app.name}</span>
+                        </a>
+                    </Link>
+                    : <span>{app.name}</span>
+                }
+                <a rel="noopener noreferrer" target="_blank" href={app.gitLink} id="gitIcon" >
+                    <Github />
+                </a>
+            </div>)}
+        </div>
+        {category.apps.length > limit && <Button onClick={() => setLimit(pre => pre + 3)}>more</Button>}
+    </div>
 }

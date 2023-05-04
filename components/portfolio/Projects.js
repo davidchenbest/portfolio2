@@ -11,8 +11,8 @@ export default function Projects() {
             <h2 className='title'>Portfolio & Projects</h2>
             <div className='portSelect'>
                 <Section data={broadfeet} />
-                <Section data={note} />
-                <Section data={weather} />
+                {/* <Section data={note} />
+                <Section data={weather} /> */}
             </div>
         </div>
     )
