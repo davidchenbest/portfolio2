@@ -29,10 +29,10 @@ export default function LandingContent() {
             <section style={{ backgroundColor: '#d3d3d370', padding: '1rem', borderRadius: "5px", marginTop: '3rem' }}>
                 <h3>Get In Touch</h3>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: "1rem", marginTop: '1rem' }}>
-                    <Link href='/calendar' ><a className='button'>Virtual</a></Link>
+                    <Link href='/calendar' className='button'>Virtual</Link>
                     <a href='mailto:davidchen108@gmail.com' className='button'>Email</a>
                 </div>
             </section>
         </div>
-    )
+    );
 }

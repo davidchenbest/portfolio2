@@ -92,12 +92,12 @@ function EachEvent({ submitEvent, addMeet, removeMeet }) {
 
     const addClick = async () => {
         setShowBtn(false)
-        !await addMeet(submitEvent._id) && setShowBtn(true)
+        !(await addMeet(submitEvent._id)) && setShowBtn(true)
     }
 
     const removeClick = async () => {
         setShowBtn(false)
-        !await removeMeet(submitEvent._id) && setShowBtn(true)
+        !(await removeMeet(submitEvent._id)) && setShowBtn(true)
 
     }
 

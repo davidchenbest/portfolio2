@@ -47,7 +47,7 @@ export default function Nba() {
             games && games.map(game =>
                 <div className={styles.game} key={game.gameId}>
                     <div className={styles.teamCon}>
-                        <Image src={`https://cdn.nba.com/logos/nba/${game.awayTeam.teamId}/primary/L/logo.svg`} alt={game.awayTeam.teamTricode} width='40' height='40' layout='fixed' />
+                        <Image src={`https://cdn.nba.com/logos/nba/${game.awayTeam.teamId}/primary/L/logo.svg`} alt={game.awayTeam.teamTricode} width='40' height='40' />
                         <div className={styles.teamNameCon}>
                             <span>{game.awayTeam.teamTricode}</span>
                             <span className={styles.record}>{`${game.awayTeam.wins}-${game.awayTeam.losses}`}</span>
@@ -61,7 +61,7 @@ export default function Nba() {
                     </div>
 
                     <div className={styles.teamCon}>
-                        <Image src={`https://cdn.nba.com/logos/nba/${game.homeTeam.teamId}/primary/L/logo.svg`} alt={game.homeTeam.teamTricode} width='40' height='40' layout='fixed' />
+                        <Image src={`https://cdn.nba.com/logos/nba/${game.homeTeam.teamId}/primary/L/logo.svg`} alt={game.homeTeam.teamTricode} width='40' height='40' />
                         <div className={styles.teamNameCon}>
                             <span>{game.homeTeam.teamTricode}</span>
                             <span className={styles.record}>{`${game.homeTeam.wins}-${game.homeTeam.losses}`}</span>

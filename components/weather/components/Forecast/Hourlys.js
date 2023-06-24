@@ -27,7 +27,7 @@ export default function Hourlys({ hourlyArr }) {
             arr.push(
                 <div key={i} className={styles.hourlyCon}>
                     <p>{getData.temp(hourlyObj)} </p>
-                    <Image src={getData.iconURL(hourlyObj)} alt={getData.description(hourlyObj)} unoptimized={IMG_UNOPTIMIZE} width='40' height='40' layout='fixed' />
+                    <Image src={getData.iconURL(hourlyObj)} alt={getData.description(hourlyObj)} unoptimized={IMG_UNOPTIMIZE} width='40' height='40' />
                     <p>{formatTime(hourlyObj.time)}</p>
                 </div>
             )

@@ -17,7 +17,7 @@ export default function Section({ data }) {
                 whileHover={{ y: '-5px' }}
                 className='img-section' >
                 <motion.div whileTap={{ scale: 1.2 }}>
-                    <Image alt={imgs[0].name} src={require(`../../../images/${imgs[0].src}`)} layout='intrinsic' id='port-img' unoptimized={IMG_UNOPTIMIZE} />
+                    <Image alt={imgs[0].name} src={require(`../../../images/${imgs[0].src}`)} id='port-img' unoptimized={IMG_UNOPTIMIZE} />
                 </motion.div>
                 <h3>{meta.title}</h3>
                 <p>{meta.description}</p>

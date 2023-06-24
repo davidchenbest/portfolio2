@@ -4,7 +4,5 @@ import Link from 'next/link'
 export default function ActiveLink({ href, name }) {
     const { asPath } = useRouter()
 
-    return (
-        <Link href={href}><a className={href === asPath ? 'active' : null}>{name}</a></Link>
-    )
+    return <Link href={href} className={href === asPath ? 'active' : null}>{name}</Link>;
 }
