@@ -53,7 +53,7 @@ export default function Nav() {
                     <Link
                         href="https://github.com/davidchenbest"
                         rel="noopener noreferrer"
-                        target="blank">
+                        target="blank" passHref>
 
                         <motion.div whileTap={{ scale: 1.2 }} >
                             <Github height={20} width={20} />

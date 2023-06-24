@@ -61,7 +61,7 @@ function Project({ category }) {
                         <Link
                             href={app.link}
                             rel="noopener noreferrer"
-                            target={!app.link.startsWith('/') ? '_blank' : null}>
+                            target={!app.link.startsWith('/') ? '_blank' : null} passHref>
 
                             <span>{app.name}</span>
 

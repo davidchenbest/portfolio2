@@ -9,7 +9,7 @@ export default function Playlists({ data, error }) {
             {data?.items.map(({ name, images, id }, i) => <Link
                 key={i}
                 href={`/spotify/playlist/${id}`}
-                style={{ width: '15rem', border: '1px solid black', padding: '.5rem 1rem', borderRadius: '5px' }}>
+                style={{ width: '15rem', border: '1px solid black', padding: '.5rem 1rem', borderRadius: '5px' }} passHref>
 
                 <h3  >{name.length > 15 ? name.slice(0, 15) + '...' : name}</h3>
                 <div >
