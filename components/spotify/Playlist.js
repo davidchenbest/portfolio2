@@ -60,6 +60,7 @@ export default function Playlist({ data, error }) {
                 if (!track) return null
                 const { name, album: { images }, uri } = track
                 return <li key={i} style={{ display: 'flex', gap: '.5rem' }}>
+                    <span>{i + 1}</span>
                     {edit && <input type='checkbox' checked={!!checked[uri]}
                         onChange={() => toggleCheck(uri)} />}
                     <Image src={images[images.length - 1].url} alt={name} height='30' width='30' layout="fixed" />

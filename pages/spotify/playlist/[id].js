@@ -14,6 +14,7 @@ export async function getServerSideProps({ req, params }) {
         let { id } = params
         const spotify = new SpotifyAPI(req)
         const data = await spotify.getPlaylist(id)
+        console.log(data);
         return {
             props: {
                 data
