@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import ActiveLink from './ActiveLink'
 import Github from './lib/Github'
-const { IMG_UNOPTIMIZE } = process.env
 
 export default function Nav() {
     const { asPath } = useRouter()

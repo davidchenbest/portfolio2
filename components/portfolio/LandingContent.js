@@ -4,15 +4,14 @@ import { slideDownVariant, fadeVariant } from '../framerMotion/motion'
 // import '../../styles/patternBackground.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
-const { IMG_UNOPTIMIZE } = process.env
 
 export default function LandingContent() {
     return (
         <div className='landing-content' >
             <motion.div
                 className='img-con'>
-                <motion.span whileTap={{ scale: 1.2 }} id='pfp'  >
-                    <Image src={require('../../images/pfp.jpg')} height={150} width={150} alt='Profile' id='pfp' priority unoptimized={IMG_UNOPTIMIZE} />
+                <motion.span whileTap={{ scale: 1.2 }}>
+                    <Image src={require('../../images/pfp.jpg')} height={150} width={150} alt='Profile' id='pfp' priority />
                 </motion.span>
                 <div >
                     <h1 id="name" >Jia Chen</h1>

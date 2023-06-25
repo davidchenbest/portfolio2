@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Github from 'components/lib/Github'
 import Button from 'components/lib/Button'
-const { IMG_UNOPTIMIZE } = process.env
 
 const categories = [
     {
