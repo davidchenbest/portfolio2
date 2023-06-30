@@ -30,9 +30,13 @@ export default function Login() {
     return (
         <div style={{ display: 'flex', gap: '1rem', flexDirection: 'column' }}>
             <Headers name='index' />
-            {providers.map((p) => <Link href={p.url.bind(p)()} key={p.name}><a target="_blank" rel="noopener noreferrer">Login {p.name}</a></Link>
+            {providers.map((p) => <Link
+                href={p.url.bind(p)()}
+                key={p.name}
+                target="_blank"
+                rel="noopener noreferrer">Login{p.name}</Link>
             )}
-            {redirect && <p><Link href={redirect}><a>Back</a></Link></p>}
+            {redirect && <p><Link href={redirect}>Back</Link></p>}
             {error && <p>{error}</p>}
         </div>
     )

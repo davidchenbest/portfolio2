@@ -62,7 +62,7 @@ export default function Playlist({ data, error }) {
                 return <li key={i} style={{ display: 'flex', gap: '.5rem' }}>
                     {edit && <input type='checkbox' checked={!!checked[uri]}
                         onChange={() => toggleCheck(uri)} />}
-                    <Image src={images[images.length - 1].url} alt={name} height='30' width='30' layout="fixed" />
+                    <Image src={images[images.length - 1].url} alt={name} height='30' width='30' />
                     <h3>{name}</h3>
                 </li>
             })}

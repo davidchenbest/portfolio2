@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import ActiveLink from './ActiveLink'
 import Github from './lib/Github'
-const { IMG_UNOPTIMIZE } = process.env
 
 export default function Nav() {
     const { asPath } = useRouter()
@@ -21,9 +20,7 @@ export default function Nav() {
         //         </>
         //     )
         // }
-        return (
-            <li id='nav-login' ><Link href='/login'><a >Login</a></Link></li>
-        )
+        return <li id='nav-login' ><Link href='/login'>Login</Link></li>;
     }
 
     const displayMenu = () => {
@@ -38,23 +35,28 @@ export default function Nav() {
     return (
         <nav>
             <motion.div whileTap={{ scale: 1.2 }} animate={{ transition: { duration: .5, ease: 'easeInOut' }, scale: [1, 1.1, 1] }}>
-                <Link href="/" >
-                    <a id='logo'>Jia Chen</a>
+                <Link href="/" id='logo'>
+                    Jia Chen
                 </Link>
             </motion.div>
             <ul className='nav-list'>
                 <li >
-                    <Link href='https://drive.google.com/file/d/1GkDC0JBxphOvPf7A27iR5U8qU5E6iuCv/view?usp=sharing'>
-                        <a rel="noopener noreferrer" target='_blank' >Resume</a>
+                    <Link
+                        href='https://drive.google.com/file/d/1GkDC0JBxphOvPf7A27iR5U8qU5E6iuCv/view?usp=sharing'
+                        rel="noopener noreferrer"
+                        target='_blank'>
+                        Resume
                     </Link>
                 </li>
                 <li id='github' >
-                    <Link href="https://github.com/davidchenbest" >
-                        <a rel="noopener noreferrer" target="blank"  >
-                            <motion.div whileTap={{ scale: 1.2 }} >
-                                <Github height={20} width={20} />
-                            </motion.div></a>
+                    <Link
+                        href="https://github.com/davidchenbest"
+                        rel="noopener noreferrer"
+                        target="blank" passHref>
 
+                        <motion.div whileTap={{ scale: 1.2 }} >
+                            <Github height={20} width={20} />
+                        </motion.div>
                     </Link>
                 </li>
                 {/* {
@@ -67,5 +69,5 @@ export default function Nav() {
 
 
         </nav >
-    )
+    );
 }

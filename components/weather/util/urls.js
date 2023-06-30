@@ -1,4 +1,4 @@
-const { WEATHER_API_KEY } = process.env
+const WEATHER_API_KEY = process.env.WEATHER_API_KEY
 if (!WEATHER_API_KEY) throw 'no WEATHER_API_KEY'
 const BASE_URL = (forecast) => `https://api.openweathermap.org/data/2.5/${forecast ? 'forecast' : 'weather'}`
 

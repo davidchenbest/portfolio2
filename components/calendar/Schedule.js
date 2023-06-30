@@ -3,8 +3,6 @@ import MyDate from "modules/MyDate.mjs"
 import { useEffect, useRef, useState, useMemo } from "react"
 import AvailableTimes from "./AvailableTimes"
 import EventForm from "./EventForm"
-process.env
-const { DEFAULT_MEET_DURATION, MEET_START_HOUR, MEET_END_HOUR, TIMEZONE } = process.env
 
 function getDateWithoutTime(date) {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate())
@@ -19,7 +17,7 @@ function isToday(date, date2) {
 
 export default function Schedule() {
     const meetRef = useRef()
-    const [interval, setInterval] = useState(1000 * 60 * DEFAULT_MEET_DURATION)
+    const [interval, setInterval] = useState(1000 * 60 * process.env.DEFAULT_MEET_DURATION)
     const [available, setAvailable] = useState()
     const [unavailable, setUnavailable] = useState()
     const [meetTime, setMeetTime] = useState(false)
@@ -45,8 +43,8 @@ export default function Schedule() {
         const data = await res.json()
         setUnavailable(data)
         const myDate = new MyDate()
-        const start = myDate.dateWithTimeZone(TIMEZONE, year, month - 1, date, MEET_START_HOUR).getTime()
-        const end = myDate.dateWithTimeZone(TIMEZONE, year, month - 1, date, MEET_END_HOUR).getTime()
+        const start = myDate.dateWithTimeZone(process.env.TIMEZONE, year, month - 1, date, process.env.MEET_START_HOUR).getTime()
+        const end = myDate.dateWithTimeZone(process.env.TIMEZONE, year, month - 1, date, process.env.MEET_END_HOUR).getTime()
         console.log(new Date(start).toLocaleString('en-US'), new Date(end).toLocaleString('en-US'));
         meetRef.current = new CalendarTime(start, end, data)
 

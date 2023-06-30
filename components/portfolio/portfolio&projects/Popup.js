@@ -2,17 +2,16 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 // import './popup.module.css'
-const { IMG_UNOPTIMIZE } = process.env
 export default function Popup({ imgs, togglePopup, popData, summary }) {
     return (
         <>
             <div className='port-screen-exit' onClick={() => togglePopup()}></div>
             <div className='port-screen'>
                 <span className='exit-screen' onClick={() => togglePopup()}>X</span>
-                <div>
+                <div className='flex flex-col gap-4'>
                     {imgs.map((img, index) => (
                         <motion.div whileTap={{ scale: 1.2 }} key={index} >
-                            <Image alt={img.name} src={require(`../../../images/${img.src}`)} id='screen-img' unoptimized={IMG_UNOPTIMIZE} />
+                            <Image alt={img.name} src={require(`../../../images/${img.src}`)} className='h-auto w-full' />
                         </motion.div>
                     ))}
 
