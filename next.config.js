@@ -13,7 +13,7 @@ const nextConfig = {
   images: {
     domains: ['lh3.googleusercontent.com', 'cdn.nba.com', 'openweathermap.org',
       'i.scdn.co', 'mosaic.scdn.co', 'thisis-images.scdn.co'],
-    unoptimized: IMG_UNOPTIMIZE,
+    unoptimized: !!IMG_UNOPTIMIZE,
   },
   env: {
     BLOG_WORD_LIMIT,
