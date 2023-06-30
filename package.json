@@ -24,7 +24,7 @@
     "socket.io-client": "^4.5.0"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^4.7.0",
+    "@netlify/plugin-nextjs": "^4.38.1",
     "autoprefixer": "^10.4.13",
     "eslint": "8.9.0",
     "eslint-config-next": "12.1.0",
