@@ -88,9 +88,9 @@ export default async function handler(req, res) {
     try {
         const products = await getProducts()
         const connection = await mongo.getConnection()
-        const results = await Promise.all(products.map(({ name, size }) => {
+        const results = await Promise.all(products.map(({ name, size, minPrice }) => {
             const url = `https://stockx.com/sell/${name}`
-            return scapeAndSave({ connection, product: name, browser, url, size })
+            return scapeAndSave({ connection, product: name, browser, url, size, minPrice })
         }))
 
         res.status(200).json(results)
@@ -106,7 +106,7 @@ export default async function handler(req, res) {
     }
 }
 
-async function scapeAndSave({ connection, product, browser, url, size }) {
+async function scapeAndSave({ connection, product, browser, url, size, minPrice }) {
     const mydate = new MyDate()
     const date = mydate.dateWithTimeZone(
         process.env.TIMEZONE, mydate.year, mydate.month, mydate.dateNum)
@@ -134,7 +134,10 @@ async function scapeAndSave({ connection, product, browser, url, size }) {
             { $push: { "prices": { price: results, date: new Date() } } }
         )
         const max = findMaxPrice(results)
+        const min = minPrice && statisfyMinPrice({ minPrice, results, size })
         if (size && size === max.size) await sendEmail({ price: max.price, name: product, size })
+        else if (min) await sendEmail({ price: min.price, name: product, size })
+
     }
 
     return { product, existInDB, results, lastPrice, date, isTodaysPrice }
@@ -159,14 +162,20 @@ async function getProducts() {
 
 }
 
+const toNumber = (x) => x.replace(/[^0-9.]/g, "")
+
 function findMaxPrice(results) {
     if (!results) return
     let max = results[0]
-    const toNumber = (x) => x.replace(/[^0-9.]/g, "")
     for (const result of results) {
         if (toNumber(max.price) < toNumber(result.price)) max = result
     }
     return max
+}
+
+function statisfyMinPrice({ results, minPrice, size }) {
+    const result = results.find(result => result.size === size)
+    return toNumber(result.price) >= minPrice ? result : null
 }
 
 async function sendEmail({ price, size, name }) {
