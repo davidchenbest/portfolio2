@@ -2,22 +2,15 @@ import puppeteer from 'puppeteer-extra'
 import StealthPlugin from 'puppeteer-extra-plugin-stealth'
 puppeteer.use(StealthPlugin())
 import { executablePath } from 'puppeteer'
+import MongoConnection from "lib/mongoConnection"
+import MyDate from 'modules/MyDate.mjs'
 
-async function main() {
-    // Launch the browser and open a new blank page
-    const browser = await puppeteer.launch({
-        executablePath: executablePath(),
-        headless: true,
-        defaultViewport: {
-            width: 1700,
-            height: 1080
-        }
-    });
+
+async function runPuppet({ product, browser, url }) {
     try {
         const page = await browser.newPage();
-        const product = 'air-jordan-1-high-og-unc-toe'
         await page.exposeFunction("getProduct", () => product);
-        await page.goto(`https://stockx.com/sell/${product}`, { waitUntil: 'load' });
+        await page.goto(url, { waitUntil: 'load' });
         await wait(1000)
         await clickIUnderstand(page)
         await wait(1000)
@@ -28,10 +21,6 @@ async function main() {
         return prices
     } catch (error) {
     }
-    finally {
-        browser.close()
-    }
-
 }
 
 async function clickIUnderstand(page) {
@@ -86,17 +75,62 @@ async function wait(time) {
 }
 
 export default async function handler(req, res) {
+    const mongo = new MongoConnection('scrapper', 'stockx')
+    const browser = await puppeteer.launch({
+        executablePath: executablePath(),
+        headless: 'new',
+        defaultViewport: {
+            width: 1700,
+            height: 1080
+        }
+    });
     try {
-        const results = await main()
-        res.status(200).json({ results })
-        if (req.method === 'POST') {
 
-        }
-        if (req.method === 'DELETE') {
+        const connection = await mongo.getConnection()
+        const product = 'air-jordan-1-retro-high-court-purple-white'
+        const url = `https://stockx.com/sell/${product}`
+        const results = await scapeAndSave({ connection, product, browser, url })
 
-        }
+        res.status(200).json(results)
     } catch (error) {
         console.error(error)
         res.status(500).json('error')
     }
+    finally {
+        await Promise.allSettled([
+            mongo.closeConnection(),
+            browser.close(),
+        ])
+    }
+}
+
+async function scapeAndSave({ connection, product, browser, url }) {
+    const mydate = new MyDate()
+    const date = mydate.dateWithTimeZone(
+        process.env.TIMEZONE, mydate.year, mydate.month, mydate.dateNum)
+
+    //save db
+    const existInDB = await connection.count({ name: product }, { limit: 1 })
+    let lastPrice
+    if (!existInDB) await connection.insertOne({ name: product })
+    else {
+        //get last price
+        lastPrice = (await connection.aggregate([
+            { $match: { name: product } }, // Add any desired match conditions
+            { $project: { lastElement: { $arrayElemAt: ["$prices", -1] } } }
+        ]).toArray())[0]?.lastElement
+    }
+
+    const lastPriceDate = new Date(lastPrice?.date)
+    const isTodaysPrice = date.toLocaleDateString() === lastPriceDate.toLocaleDateString()
+    let results
+    if (!isTodaysPrice) {
+        results = await runPuppet({ product, browser, url })
+        //add price
+        await connection.updateOne(
+            { name: product },
+            { $push: { "prices": { price: results, date: new Date() } } }
+        )
+    }
+    return { existInDB, results, lastPrice, date, isTodaysPrice }
 }
