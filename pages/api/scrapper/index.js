@@ -85,11 +85,12 @@ export default async function handler(req, res) {
         }
     });
     try {
-
+        const products = await getProducts()
         const connection = await mongo.getConnection()
-        const product = 'air-jordan-1-retro-high-court-purple-white'
-        const url = `https://stockx.com/sell/${product}`
-        const results = await scapeAndSave({ connection, product, browser, url })
+        const results = await Promise.all(products.map(({ name }) => {
+            const url = `https://stockx.com/sell/${name}`
+            return scapeAndSave({ connection, product: name, browser, url })
+        }))
 
         res.status(200).json(results)
     } catch (error) {
@@ -133,4 +134,23 @@ async function scapeAndSave({ connection, product, browser, url }) {
         )
     }
     return { existInDB, results, lastPrice, date, isTodaysPrice }
+}
+
+
+async function getProducts() {
+    const mongo = new MongoConnection('scrapper', 'producttracking')
+    try {
+
+        const connection = await mongo.getConnection()
+        const products = await connection.find().toArray()
+        return products
+    } catch (error) {
+        throw error
+    }
+    finally {
+        await Promise.allSettled([
+            mongo.closeConnection(),
+        ])
+    }
+
 }
