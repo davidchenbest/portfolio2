@@ -4,6 +4,7 @@ puppeteer.use(StealthPlugin())
 import { executablePath } from 'puppeteer'
 import MongoConnection from "lib/mongoConnection"
 import MyDate from 'modules/MyDate.mjs'
+import Mailer from 'modules/Mailer'
 
 
 async function runPuppet({ product, browser, url }) {
@@ -87,9 +88,9 @@ export default async function handler(req, res) {
     try {
         const products = await getProducts()
         const connection = await mongo.getConnection()
-        const results = await Promise.all(products.map(({ name }) => {
+        const results = await Promise.all(products.map(({ name, size }) => {
             const url = `https://stockx.com/sell/${name}`
-            return scapeAndSave({ connection, product: name, browser, url })
+            return scapeAndSave({ connection, product: name, browser, url, size })
         }))
 
         res.status(200).json(results)
@@ -105,7 +106,7 @@ export default async function handler(req, res) {
     }
 }
 
-async function scapeAndSave({ connection, product, browser, url }) {
+async function scapeAndSave({ connection, product, browser, url, size }) {
     const mydate = new MyDate()
     const date = mydate.dateWithTimeZone(
         process.env.TIMEZONE, mydate.year, mydate.month, mydate.dateNum)
@@ -132,8 +133,11 @@ async function scapeAndSave({ connection, product, browser, url }) {
             { name: product },
             { $push: { "prices": { price: results, date: new Date() } } }
         )
+        const max = findMaxPrice(results)
+        if (size && size === max.size) await sendEmail({ price: max.price, name: product, size })
     }
-    return { existInDB, results, lastPrice, date, isTodaysPrice }
+
+    return { product, existInDB, results, lastPrice, date, isTodaysPrice }
 }
 
 
@@ -153,4 +157,21 @@ async function getProducts() {
         ])
     }
 
+}
+
+function findMaxPrice(results) {
+    if (!results) return
+    let max = results[0]
+    const toNumber = (x) => x.replace(/[^0-9.]/g, "")
+    for (const result of results) {
+        if (toNumber(max.price) < toNumber(result.price)) max = result
+    }
+    return max
+}
+
+async function sendEmail({ price, size, name }) {
+    const HTML = `<p>${name} ${size} ${price}</p>`
+    const SUBJECT = `${name} ${size} ${price}`
+    const mailer = new Mailer()
+    await mailer.sendEmail(HTML, SUBJECT)
 }
