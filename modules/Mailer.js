@@ -1,9 +1,6 @@
 // send email notification to self for client request events
 import nodemailer from 'nodemailer'
-const { MAILER_EMAIL, MAILER_PASSWORD, MAIN_CALENDAR_ID, NODE_ENV } = process.env
-const SUBJECT = 'New Meet Request'
-const url = NODE_ENV === 'production' ? 'https://jiachen.vercel.app/calendar/admin' : 'http://localhost:3000/calendar/admin'
-const HTML = `<a href='${url}'>See new meet Request</a>`
+const { MAILER_EMAIL, MAILER_PASSWORD, MAIN_CALENDAR_ID } = process.env
 
 export default class Mailer {
     constructor() {
@@ -18,12 +15,12 @@ export default class Mailer {
         });
     }
 
-    async sendEmail() {
+    async sendEmail(html, subject) {
         const mailOptions = {
             from: this.email,
             to: [MAIN_CALENDAR_ID],
-            subject: SUBJECT,
-            html: HTML
+            subject,
+            html
 
         };
         try {
