@@ -134,9 +134,10 @@ async function scapeAndSave({ connection, product, browser, url, size, minPrice 
             { $push: { "prices": { price: results, date: new Date() } } }
         )
         const max = findMaxPrice(results)
+        const sizePrice = results.find(r => r?.size === size)
         const min = minPrice && statisfyMinPrice({ minPrice, results, size })
-        if (size && size === max.size) await sendEmail({ price: max.price, name: product, size })
-        else if (min) await sendEmail({ price: min.price, name: product, size })
+        if (sizePrice === max.price) await sendEmail({ price: max.price, name: product, size, results })
+        else if (min) await sendEmail({ price: min.price, name: product, size, results })
 
     }
 
@@ -162,7 +163,7 @@ async function getProducts() {
 
 }
 
-const toNumber = (x) => x.replace(/[^0-9.]/g, "")
+const toNumber = (x) => +(x.replace(/[^0-9.]/g, ""))
 
 function findMaxPrice(results) {
     if (!results) return
@@ -178,8 +179,8 @@ function statisfyMinPrice({ results, minPrice, size }) {
     return toNumber(result.price) >= minPrice ? result : null
 }
 
-async function sendEmail({ price, size, name }) {
-    const HTML = `<p>${name} ${size} ${price}</p>`
+async function sendEmail({ price, size, name, results }) {
+    const HTML = `<p>${name} ${size} ${price}</p><p>${results}</p>`
     const SUBJECT = `Price Alert`
     const mailer = new Mailer()
     await mailer.sendEmail(HTML, SUBJECT)
