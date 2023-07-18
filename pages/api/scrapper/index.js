@@ -176,7 +176,7 @@ function findMaxPrice(results) {
 
 function statisfyMinPrice({ results, minPrice, size }) {
     const result = results.find(result => result.size === size)
-    return toNumber(result.price) >= minPrice ? result : null
+    return toNumber(result.price) >= toNumber(minPrice) ? result : null
 }
 
 async function sendEmail({ price, size, name, results }) {
