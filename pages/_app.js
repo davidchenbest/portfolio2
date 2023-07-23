@@ -8,9 +8,11 @@ import '../styles/photosCon.css'
 import Nav from '../components/nav'
 import SubNav from '../components/subNav/SubNav'
 import Footer from '../components/Footer'
+import Gtag from 'components/Gtag'
 
 function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
   return (<>
+    <Gtag/>
     <Nav />
     <SubNav />
     <Component {...pageProps} />
