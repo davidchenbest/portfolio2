@@ -96,7 +96,7 @@ export default function BulkImport({ playlist_id, existingItems }) {
         {pendingItems.map(({ album, uri, name }, i) => {
             const { images } = album
             return <div key={i} style={{ display: 'flex', gap: '.5rem' }}>
-                <Image src={images[images.length - 1].url} alt={name} height='30' width='30' layout="fixed" />
+                <Image src={images[images.length - 1].url} alt={name} height='30' width='30' />
                 <h4>{name}</h4>
                 <Button name='x' onClick={() => deleteItem(i)} />
             </div>

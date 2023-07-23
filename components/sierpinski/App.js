@@ -61,27 +61,26 @@ function clearCanvas(ctx) {
 
 export default function App() {
     const [CORDS, setCORDS] = useState([])
-    const [currentPoint, setCurrentPoint] = useState()
+    const currentPoint = useRef()
     const [mouseCord, setMouseCord] = useState()
     const canvas = useRef()
     useEffect(() => {
         const ctx = canvas.current.getContext("2d");
         if (CORDS.length === NUMBER_VERTEX) drawShape(ctx, CORDS)
-        if (currentPoint) init(ctx, currentPoint)
-    }, [currentPoint, CORDS])
+    }, [CORDS])
 
 
     const plotRandom = () => {
         const ctx = canvas.current.getContext("2d");
         const vertexPoint = findRandomVertex(CORDS)
-        const midpoint = plotMidpoint(ctx, currentPoint, vertexPoint)
-        currentPoint = midpoint
+        const midpoint = plotMidpoint(ctx, currentPoint.current, vertexPoint)
+        currentPoint.current = midpoint
 
     }
     const reset = () => {
         const ctx = canvas.current.getContext("2d");
         clearCanvas(ctx)
-        setCurrentPoint()
+        currentPoint.current = null
         setCORDS([])
     }
 
@@ -98,12 +97,15 @@ export default function App() {
         setMouseCord([x, y])
     }
     const canvasClick = () => {
+        const ctx = canvas.current.getContext("2d");
         if (CORDS.length < NUMBER_VERTEX) {
-            const ctx = canvas.current.getContext("2d");
             plot(ctx, ...mouseCord)
             setCORDS(pre => [...pre, mouseCord])
         }
-        else if (!currentPoint) setCurrentPoint(mouseCord)
+        else if (!currentPoint.current) {
+            currentPoint.current = (mouseCord)
+            init(ctx, currentPoint.current)
+        }
 
     }
 
@@ -112,8 +114,8 @@ export default function App() {
         <div className={styles.demo}>
 
             <span className={styles.canvas}>
-                <Cord cord={mouseCord} point={currentPoint} />
-                <Direction CORDS={CORDS} NUMBER_VERTEX={NUMBER_VERTEX} point={currentPoint} />
+                <Cord cord={mouseCord} point={currentPoint.current} />
+                <Direction CORDS={CORDS} NUMBER_VERTEX={NUMBER_VERTEX} point={currentPoint.current} />
                 <canvas onMouseMove={calculateCord} onClick={canvasClick} ref={canvas} width={WIDTH} height={HEIGHT}
                     style={{ border: '1px solid #d3d3d3' }}>
                     Your browser does not support the canvas element.
@@ -121,7 +123,7 @@ export default function App() {
             </span>
             <div className={styles.buttons}>
                 {CORDS.length !== NUMBER_VERTEX && <Button name='Default vertex' onClick={setDefaultVertex} />}
-                {currentPoint && <>
+                {currentPoint.current && <>
                     <Button onClick={plotRandom} name='Plot' />
                     <HoverButton onClick={automatePlot} name='Automate' text={`automate ${AUTOMATE} plots`} />
                     <Button onClick={reset} name='Reset' />

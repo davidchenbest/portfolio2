@@ -5,7 +5,6 @@ import Loading from './Loading'
 import styles from '../styles/currentWeather.module.css'
 import windowImg from '../../../images/windowFrame.png'
 import Image from 'next/image'
-const { IMG_UNOPTIMIZE } = process.env
 
 
 export default function CurrentWeather({ weatherObj }) {
@@ -16,7 +15,7 @@ export default function CurrentWeather({ weatherObj }) {
             {weatherObj ?
                 <div className={styles.currentWeatherCon}>
                     <div className={styles.iconCon}>
-                        <Image src={windowImg} alt='window' id='background' unoptimized={IMG_UNOPTIMIZE} layout='fixed' width='400' height='320' priority />
+                        <Image src={windowImg} alt='window' id='background' width='400' height='320' priority />
                         <div className={styles.weatherImgCon}>
                             <div className={styles.currentTemp}>
                                 <h1>{getData.temp(weatherObj)}</h1> <span>{unit}</span>
@@ -25,7 +24,7 @@ export default function CurrentWeather({ weatherObj }) {
                                 <p>H: {getData.maxTemp(weatherObj)}</p>
                                 <p>L: {getData.minTemp(weatherObj)}</p>
                             </div>
-                            <Image src={getData.iconURL(weatherObj)} alt={getData.description(weatherObj)} unoptimized={IMG_UNOPTIMIZE} width='100' height='100' layout='fixed' />
+                            <Image src={getData.iconURL(weatherObj)} alt={getData.description(weatherObj)} width='100' height='100' />
                             <p>{getData.description(weatherObj)}</p>
                         </div>
 

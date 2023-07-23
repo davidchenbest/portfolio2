@@ -29,13 +29,6 @@ a {
   line-height: 1.8;
 }
 
-#port-img {
-  max-width: 100%;
-
-  object-fit: cover;
-  cursor: pointer;
-}
-
 .otherApp {
   border: 1px solid lightgrey;
   border-radius: 5px;
@@ -92,16 +85,6 @@ a {
   top: 0;
   right: 0;
   position: fixed;
-}
-
-#screen-img {
-  background-color: hotpink;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-#screen-img:hover {
-  border: 1px solid lightgrey;
 }
 
 .screen-title {
