@@ -2,6 +2,7 @@ import Button from "components/lib/Button"
 import Input from "components/lib/Input"
 import Textarea from "components/lib/Textarea"
 import Loading from "components/Loading"
+import { processArrayInChunks } from "modules/helper"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { useMemo, useState } from "react"
@@ -31,20 +32,26 @@ export default function BulkImport({ playlist_id, existingItems }) {
     const refreshData = async () => {
         await router.replace(router.asPath);
     }
+
+    async function getSearchResults(tracks) {
+        const res = await fetch(`/api/spotify/search`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ tracks })
+        })
+        const items = (await res.json()).filter(({ uri }) => !existingTracks.has(uri) && !existingPendings.has(uri))
+        return items
+    }
+
     const submit = async (e) => {
         try {
             e.preventDefault()
             if (!tracks.length) return
             setIsSearch(true)
             const cleanTracks = tracks.split(',').map(track => track.trim())
-            const res = await fetch(`/api/spotify/search`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ tracks: cleanTracks })
-            })
-            const items = (await res.json()).filter(({ uri }) => !existingTracks.has(uri) && !existingPendings.has(uri))
+            const items = await processArrayInChunks({ array: cleanTracks, batchSize: 30, asyncOperation: getSearchResults })
 
             setPendingItems(pre => [...pre, ...items])
             setTracks('')
@@ -55,17 +62,23 @@ export default function BulkImport({ playlist_id, existingItems }) {
             setIsSearch(false)
         }
     }
+
+    async function addTracks(uris) {
+        const res = await fetch(`/api/spotify`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ playlist_id, uris })
+        })
+        return await res.json()
+    }
+
     const addItems = async () => {
         try {
             const uris = pendingItems.map(({ uri }) => uri)
-            const res = await fetch(`/api/spotify`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ playlist_id, uris })
-            })
-            console.log(await res.json());
+            const items = await processArrayInChunks({ array: uris, batchSize: 30, asyncOperation: addTracks })
+            console.log(items);
             await refreshData()
             setPendingItems([])
         } catch (error) {
