@@ -1,14 +1,15 @@
 import Gallery from "../../components/gallery/Gallery"
 import MongoConnection from "../../lib/mongoConnection"
 import Headers from "../../components/Headers"
-import InsaPosts from "components/gallery/InstaPost"
+import InstaPosts from "components/gallery/InstaPost"
+import instaData from 'public/insta/meta.json'
 
 
 export default function GalleryPage({ albums, instaPosts }) {
     return (
         <>
             <Headers name='gallery' />
-            <InsaPosts albums={instaPosts} />
+            <InstaPosts albums={instaPosts} />
             <Gallery albums={albums} />
         </>
     )
@@ -29,21 +30,5 @@ export async function getStaticProps(context) {
 }
 
 async function getInstaPosts() {
-    const mongo = new MongoConnection('blog', 'insta')
-    try {
-        const connection = await mongo.getConnection()
-        const posts = await connection.find().toArray()
-        for (const post of posts) {
-            post.photos = post.photos.map((p, i) => ({ photoLink: p, _id: i }))
-        }
-        return posts
-    } catch (error) {
-        console.error(error)
-        throw error
-    }
-    finally {
-        await Promise.allSettled([
-            mongo.closeConnection(),
-        ])
-    }
+    return instaData
 }
