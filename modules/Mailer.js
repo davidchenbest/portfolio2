@@ -18,12 +18,12 @@ export default class Mailer {
         });
     }
 
-    async sendEmail() {
+    async sendEmail(html = HTML, subject = SUBJECT) {
         const mailOptions = {
             from: this.email,
             to: [MAIN_CALENDAR_ID],
-            subject: SUBJECT,
-            html: HTML
+            subject,
+            html
 
         };
         try {
