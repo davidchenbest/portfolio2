@@ -3,7 +3,7 @@ import { UnitContext } from '../context/UnitContext'
 import { getData } from '../util/getData'
 import Loading from './Loading'
 import styles from '../styles/currentWeather.module.css'
-import windowImg from '../../../images/windowFrame.png'
+import windowImg from '../../../public/windowFrame.png'
 import Image from 'next/image'
 
 

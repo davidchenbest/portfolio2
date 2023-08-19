@@ -11,7 +11,7 @@ export default function LandingContent() {
             <motion.div
                 className='img-con'>
                 <motion.span whileTap={{ scale: 1.2 }}>
-                    <Image src={require('../../images/pfp.jpg')} height={150} width={150} alt='Profile' id='pfp' priority />
+                    <Image src={require('../../public/pfp.jpg')} height={150} width={150} alt='Profile' id='pfp' priority />
                 </motion.span>
                 <div >
                     <h1 id="name" >Jia Chen</h1>

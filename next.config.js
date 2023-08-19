@@ -14,7 +14,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ['lh3.googleusercontent.com', 'cdn.nba.com', 'openweathermap.org',
-      'i.scdn.co', 'mosaic.scdn.co', 'thisis-images.scdn.co'],
+      'i.scdn.co', 'mosaic.scdn.co', 'thisis-images.scdn.co', 'scontent-lga3-2.cdninstagram.com', "scontent-lga3-1.cdninstagram.com"],
     unoptimized: !!IMG_UNOPTIMIZE,
   },
   env: {

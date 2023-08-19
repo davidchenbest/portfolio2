@@ -44,7 +44,7 @@ export default function Navigator({ currentPhoto, singleState }) {
             <i className="material-icons" id='exit' onClick={e => exitClick(e)}>&#xe5cd;</i>
             <i className="material-icons" id='left' onClick={e => setStateLeftRight(e, -1)}>&#xe5cb;</i>
             <i className="material-icons" id='right' onClick={e => setStateLeftRight(e, 1)}>&#xe5cc;</i>
-            {currentLink && <Image src={currentLink} alt={currentLink} width={400} height={400} className='h-auto w-full object-contain' />}
+            {currentLink && <Image src={currentLink} alt={currentLink} width={400} height={400} className='h-auto w-full object-contain border' />}
         </div>
     )
 }
