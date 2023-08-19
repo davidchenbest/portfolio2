@@ -11,7 +11,7 @@ export default function Popup({ imgs, togglePopup, popData, summary }) {
                 <div className='flex flex-col gap-4'>
                     {imgs.map((img, index) => (
                         <motion.div whileTap={{ scale: 1.2 }} key={index} >
-                            <Image alt={img.name} src={require(`../../../images/${img.src}`)} className='h-auto w-full' />
+                            <Image alt={img.name} src={require(`../../../public/${img.src}`)} className='h-auto w-full' />
                         </motion.div>
                     ))}
 

@@ -10,7 +10,7 @@ export default function PhotosCon({ folderObj, photos, photoClick }) {
             {
                 photos.length === 0 ? <div>There are no photos available</div> :
                     photos.map((element, i) =>
-                        <motion.div whileHover={{ scale: 1.05 }} key={element._id} className='eachPhoto' >
+                        <motion.div whileHover={{ scale: 1.05 }} key={element._id || i} className='eachPhoto' >
                             <Image src={element.photoLink} alt={element.photoLink} width={300} height={300} className='galleryPhoto'
                                 onClick={(e) => photoClick(e, folderObj, element, i)} />
                         </motion.div>

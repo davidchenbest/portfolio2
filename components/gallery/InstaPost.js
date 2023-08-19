@@ -5,7 +5,7 @@ import Loading from '../Loading'
 import Navigator from './Navigator'
 // import '../../css/gallery.css'
 
-export default function Gallery({ albums }) {
+export default function InsaPosts({ albums }) {
     const [folders, setFolders] = useState([])
     const [loading, setLoading] = useState(true)
     const [singleMode, setSingleMode] = useState(false)
@@ -18,13 +18,14 @@ export default function Gallery({ albums }) {
     }, [albums])
 
     const folderClick = (e, folderObj) => {
-
+        console.log(99);
         // console.log(e.target, folderObj);
     }
 
-    const photoClick = (e, folderObj, photoObj) => {
+    const photoClick = (e, folderObj, photoObj, i) => {
+        console.log(i);
         setSingleMode(!singleMode)
-        e.stopPropagation()
+        console.log(photoObj);
         setCurrentPhoto({ folderObj, photoObj })
     }
 
@@ -36,12 +37,12 @@ export default function Gallery({ albums }) {
                     {
                         folders.length === 0 ? <div>There are no photos available</div> :
                             folders.map((element) =>
-                                <div key={element._id} onClick={(e) => folderClick(e, element)} className='folderCon'>
+                                <div key={element._id} className='folderCon'>
                                     <div className='folderTitle'>
-                                        <h1>{capFirst(element.title)}</h1>
+                                        <h1>{capFirst(element.location)}</h1>
                                     </div>
 
-                                    <p>{element.description}</p>
+                                    {/* <p>{element.description}</p> */}
                                     <PhotosCon folderState={{ folders, setFolders }} folderObj={element} photos={element.photos} photoClick={photoClick}></PhotosCon>
                                 </div>
                             )
