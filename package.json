@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "eslint": "eslint --fix .",
-    "test": "jest tests"
+    "test:e2e": "jest tests/e2e"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
