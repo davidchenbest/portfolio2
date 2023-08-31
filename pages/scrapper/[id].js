@@ -37,7 +37,7 @@ export default function Product({ product }) {
                     </td>)}</tr>
             </thead>
             <tbody>
-                {product.prices.reverse().map(({ price, date }, i) => <tr key={date} className='hover:'>
+                {product.prices.map(({ price, date }, i) => <tr key={date} className='hover:'>
 
                     <td>{new Date(date).toISOString()}</td>
 
@@ -56,6 +56,7 @@ export async function getServerSideProps({ params }) {
         let { id } = params
         const connection = await mongo.getConnection()
         const product = await connection.findOne({ _id: ObjectId(id) })
+        product.prices.reverse()
         return {
             props: JSON.parse(JSON.stringify({ product }))
         }

@@ -14,7 +14,6 @@ export async function getServerSideProps({ req, res, query }) {
     try {
         const connection = await mongo.getConnection()
         const products = await connection.find({}, { projection: { name: 1 } }).toArray()
-        console.log(products[0]);
         return {
             props: JSON.parse(JSON.stringify({ products }))
         }
