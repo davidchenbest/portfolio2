@@ -50,7 +50,6 @@ export default function Product({ product }) {
         const columnPrices = colPrices(product)
         const averages = calAverage(columnPrices)
         const lowHigh = columnPrices.map(col => calLowHigh(col))
-        console.log(lowHigh);
         for (let i = 0; i < cols.length; i++) {
             cols[i].average = averages[i]
             cols[i].low = lowHigh[i].low
@@ -115,13 +114,13 @@ export default function Product({ product }) {
         </table>
         <section className='fixed bottom-0 right-0 p-2 bg-slate-400'>
             {row > -1 && <div className='flex gap-2'>
-                <h3>Row: {row}</h3>
+                <h3>Row: {new Date(product.prices[row].date).toLocaleDateString()}</h3>
                 <p>average: {statsRow[row]?.average}</p>
                 <p>high: {statsRow[row]?.high}</p>
                 <p>low: {statsRow[row]?.low}</p>
             </div>}
             {col > -1 && <div className='flex gap-2'>
-                <h3>Col: {col}</h3>
+                <h3>Size: {product.prices[0].price[col].size}</h3>
                 <p>average: {statsCol[col]?.average}</p>
                 <p>high: {statsCol[col]?.high}</p>
                 <p>low: {statsCol[col]?.low}</p>
