@@ -2,8 +2,21 @@ import MongoConnection from 'lib/mongoConnection.mjs';
 import { ObjectId } from 'mongodb';
 import { useMemo } from 'react';
 
+function calLowHigh(product) {
+    return product.prices.map(p => {
+        const prices = []
+        for (const { price } of p.price) {
+            const num = +(price.replace(/[^0-9.]/g, ""))
+            if (num > 0) prices.push(num)
+        }
+        const low = Math.min(...prices)
+        const high = Math.max(...prices)
+        return { low, high }
+    })
+}
+
 export default function Product({ product }) {
-    const averages = useMemo(() => {
+    const averagesCol = useMemo(() => {
         const avgs = Array.from({
             length: product.prices[0]?.price.length
         }, () => new Array());
@@ -21,6 +34,19 @@ export default function Product({ product }) {
         }
         return avgs
     }, [product])
+
+    const statsRow = useMemo(() => {
+        const combine = Array.from({
+            length: product.prices.length
+        }, () => ({}))
+        const lowHigh = calLowHigh(product)
+        for (let i = 0; i < combine.length; i++) {
+            combine[i].low = lowHigh[i].low
+            combine[i].high = lowHigh[i].high
+
+        }
+        return combine
+    }, [product])
     return <>
         <h1>{product.name}</h1>
         <table className='border-separate border'>
@@ -32,7 +58,7 @@ export default function Product({ product }) {
                     </td>)}</tr>
                 <tr>
                     <td></td>
-                    {averages.map((avg) => <td key={avg} className='border border-slate-700 px-3 py-2'>
+                    {averagesCol.map((avg) => <td key={avg} className='border border-slate-700 px-3 py-2'>
                         <p>{avg}</p>
                     </td>)}</tr>
             </thead>
@@ -41,13 +67,22 @@ export default function Product({ product }) {
 
                     <td>{new Date(date).toISOString()}</td>
 
-                    {price.map(({ size, price }) => <td key={size} className='border border-slate-700 px-3 py-2'>
-                        <p>{price}</p>
-                    </td>)}
+                    {price.map(({ size, price }) => {
+                        let extraClass = ' '
+                        const p = +(price.replace(/[^0-9.]/g, ""))
+                        const isHigh = p === statsRow[i].high
+                        const isLow = p === statsRow[i].low
+                        if (isHigh) extraClass += 'text-green-500 font-bold'
+                        else if (isLow) extraClass += 'text-red-500 font-bold'
+                        return <td key={size} className='border border-slate-700 px-3 py-2'>
+                            <p className={extraClass}>{price}</p>
+                        </td>
+                    })}
                 </tr>)}
             </tbody>
 
-        </table></>
+        </table>
+    </>
 }
 
 export async function getServerSideProps({ params }) {
@@ -55,7 +90,7 @@ export async function getServerSideProps({ params }) {
     try {
         let { id } = params
         const connection = await mongo.getConnection()
-        const product = await connection.findOne({ _id: ObjectId(id) })
+        const product = await connection.findOne({ _id: new ObjectId(id) })
         product.prices.reverse()
         return {
             props: JSON.parse(JSON.stringify({ product }))
