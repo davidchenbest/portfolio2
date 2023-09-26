@@ -100,8 +100,8 @@ export default function Product({ product }) {
                         const p = +(price.replace(/[^0-9.]/g, ""))
                         const isHigh = p === statsRow[i].high
                         const isLow = p === statsRow[i].low
-                        if (isHigh) extraClass += 'text-green-500 font-bold'
-                        else if (isLow) extraClass += 'text-red-500 font-bold'
+                        if (isHigh) extraClass += 'text-green-600 font-bold'
+                        else if (isLow) extraClass += 'text-red-600 font-bold'
                         return <td
                             onMouseEnter={() => setCol(j)}
                             key={size} className='border border-slate-700 px-3 py-2'>
@@ -116,14 +116,14 @@ export default function Product({ product }) {
             {row > -1 && <div className='flex gap-2'>
                 <h3>Row: {new Date(product.prices[row].date).toLocaleDateString()}</h3>
                 <p>average: {statsRow[row]?.average}</p>
-                <p>high: {statsRow[row]?.high}</p>
-                <p>low: {statsRow[row]?.low}</p>
+                <p className='text-green-600'>high: {statsRow[row]?.high}</p>
+                <p className='text-red-600'>low: {statsRow[row]?.low}</p>
             </div>}
             {col > -1 && <div className='flex gap-2'>
                 <h3>Size: {product.prices[0].price[col].size}</h3>
                 <p>average: {statsCol[col]?.average}</p>
-                <p>high: {statsCol[col]?.high}</p>
-                <p>low: {statsCol[col]?.low}</p>
+                <p className='text-green-600'>high: {statsCol[col]?.high}</p>
+                <p className='text-red-600'>low: {statsCol[col]?.low}</p>
             </div>}
         </section>
     </>
