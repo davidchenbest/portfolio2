@@ -30,6 +30,7 @@ jobs:
         run:
           if [ -z "$HOST" ]; then
             echo "HOST undefined. Building localapp..."
+            npm i
             npm run build
             npm start
           fi
