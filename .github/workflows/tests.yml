@@ -27,4 +27,10 @@ jobs:
       - name: Run Test
         env:
           HOST: ${{secrets.HOST}}
-        run: npm run test:e2e
+        run:
+          if [ -z "$HOST" ]; then
+            echo "HOST undefined. Building localapp..."
+            npm run build
+            npm start
+          fi
+          npm run test:e2e
