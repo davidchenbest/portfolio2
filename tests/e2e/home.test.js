@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const HOST = process.env.HOST
+const HOST = process.env.HOST || 'http://localhost:3000'
 describe('Home', () => {
     let browser;
     let page;
