@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "chmod +x initTest.sh && ./initTest.sh",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "eslint": "eslint --fix .",
-    "pretest:e2e": "chmod +x initTest.sh && ./initTest.sh",
     "test:e2e": "jest tests/e2e"
   },
   "dependencies": {
