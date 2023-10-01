@@ -24,15 +24,18 @@ jobs:
       - name: Install Dependencies
         run: npm install puppeteer jest
 
-      - name: Run Test and Build
+      - name: Build App
+        env:
+            HOST: ${{ secrets.HOST }}
+          run: |
+            if [ -z "$HOST" ]; then
+              echo "HOST undefined. Building localapp..."
+              npm install &&
+              npm run build &&
+              npm start
+            fi
+
+      - name: Run Test
         env:
           HOST: ${{ secrets.HOST }}
-        run: |
-          if [ -z "$HOST" ]; then
-            echo "HOST undefined. Building localapp..."
-            npm install &&
-            npm run build &&
-            npm start &
-            sleep 1 # Wait for the server to start (adjust the sleep duration as needed)
-          fi
-          npm run test:e2e
+        run: npm run test:e2e
