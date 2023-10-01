@@ -4,12 +4,16 @@ import ActiveLink from '../ActiveLink'
 const subNav = {
     '/nba': ['/score', '/standings'],
     // "/projects": ['/blog', '/gallery'],
-    "/projects": ['/gallery'],
+    "/projects": ['/gallery', {
+        name: 'Store', link: 'https://jiachenstore.vercel.app'
+    }],
     '/tools': [, '/videoroom', '/weather', '/bill-split', '/countdown'],
     '/concepts': [, '/sierpinski']
 }
 
 function format(url) {
+    const sameDomain = url.startsWith('/')
+    if (!sameDomain) return url
     let name = url.replace(/\//, '')
     let capFirstName = name[0].toUpperCase() + name.slice(1)
     return capFirstName
@@ -25,8 +29,14 @@ export default function SubNav() {
     return (
         <>
             {subs && <div className='nav-list sub-nav'>
-                {subs.map(sub =>
-                    <ActiveLink href={path + sub} name={format(sub)} key={sub} />
+                {subs.map(sub => {
+                    const { name } = sub
+                    if (typeof sub !== 'string') sub = sub.link
+                    let href = path + sub
+                    const sameDomain = sub.startsWith('/')
+                    if (!sameDomain) href = sub
+                    return <ActiveLink target={!sameDomain ? '_blank' : ''} href={href} name={name || format(sub)} key={sub} />
+                }
                 )}
             </div>}
         </>

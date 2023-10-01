@@ -9,7 +9,9 @@ const categories = [
     {
         name: 'Projects', apps: [
             // { name: 'Blog', link: '/projects/blog', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/blog' },
-            { name: 'Gallery', link: '/projects/gallery', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/gallery' },]
+            { name: 'Gallery', link: '/projects/gallery', gitLink: 'https://github.com/davidchenbest/portfolio2/tree/master/components/gallery' },
+            { name: 'Store', link: 'https://jiachenstore.vercel.app' },
+        ]
     },
     {
         name: 'Tools', apps: [
