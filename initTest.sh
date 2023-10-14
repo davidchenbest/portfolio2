@@ -20,3 +20,8 @@ if [ ! -e "$file_path" ]; then
 else
     echo "Test File already exists."
 fi
+
+if [ -n "$ALL_ENVS" ]; then
+    echo "writing env"
+    echo "$ALL_ENVS" >> .env.local
+fi

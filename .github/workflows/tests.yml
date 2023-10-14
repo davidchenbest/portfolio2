@@ -27,6 +27,7 @@ jobs:
       - name: Build App
         env:
           HOST: ${{ secrets.HOST }}
+          ALL_ENVS: ${{ secrets.ALL_ENVS }}
         run: |
           if [ -z "$HOST" ]; then
             echo "HOST undefined. Building localapp..."
