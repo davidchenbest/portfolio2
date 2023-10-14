@@ -15,7 +15,7 @@
     "cookies": "^0.8.0",
     "framer-motion": "^6.2.6",
     "googleapis": "^100.0.0",
-    "mongodb": "^4.4.0",
+    "mongodb": "^5.7.0",
     "next": "13.4.7",
     "node-fetch": "^3.2.4",
     "nodemailer": "^6.7.6",

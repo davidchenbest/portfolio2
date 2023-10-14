@@ -1,6 +1,9 @@
 import MongoConnection from "lib/mongoConnection"
 import { createEventObj, isTimeAvailable, searchKeys } from 'modules/CalendarEvent'
 import Mailer from "modules/Mailer"
+const URL = process.NODE_ENV === 'production' ? 'https://jiachen.vercel.app/calendar/admin' : 'http://localhost:3000/calendar/admin'
+const SUBJECT = 'New Meet Request'
+const HTML = `<a href='${URL}'>See new meet Request</a>`
 
 export default async function handler(req, res) {
     const mongo = new MongoConnection('calendar', 'client')
@@ -16,7 +19,7 @@ export default async function handler(req, res) {
             const data = await connection.insertOne(doc)
             if (!data?.insertedId) throw new Error('error request for meet')
             const mailer = new Mailer()
-            await mailer.sendEmail()
+            await mailer.sendEmail(HTML, SUBJECT)
             return res.status(200).json(data)
         }
         res.status(200).json({ test: req.method })
