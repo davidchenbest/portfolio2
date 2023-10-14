@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function Products({ products }) {
     return <>
         {products.map(({ _id, name }) => <div key={_id}>
-            <Link href={'/scrapper/' + _id}><h3>{name}</h3></Link>
+            <h3><Link href={'/scrapper/' + _id}>{name}</Link></h3>
         </div>)}
     </>
 }
