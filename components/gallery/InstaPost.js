@@ -35,7 +35,7 @@ export default function InsaPosts({ albums }) {
                 :
                 <div className='galleryCon'>
                     {
-                        folders.length === 0 ? <div>There are no photos available</div> :
+                        folders.length === 0 ? null :
                             folders.map((element) =>
                                 <div key={element._id} className='folderCon'>
                                     <div className='folderTitle'>
