@@ -22,9 +22,27 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install Dependencies
-        run: npm install puppeteer jest
+        run: npm install
+
+      - name: Build App
+        env:
+          HOST: ${{ secrets.HOST }}
+          ALL_ENVS: ${{ secrets.ALL_ENVS }}
+        run: |
+          if [ -z "$HOST" ]; then
+            echo "HOST undefined. Building localapp..."
+            npm run build
+          fi
+
+      - name: Start App
+        env:
+          HOST: ${{ secrets.HOST }}
+        run: |
+          if [ -z "$HOST" ]; then
+            npm run start &
+          fi
 
       - name: Run Test
         env:
-          HOST: ${{secrets.HOST}}
+          HOST: ${{ secrets.HOST }}
         run: npm run test:e2e
