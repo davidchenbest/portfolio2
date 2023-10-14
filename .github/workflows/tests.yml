@@ -32,7 +32,15 @@ jobs:
           if [ -z "$HOST" ]; then
             echo "HOST undefined. Building localapp..."
             npm run build &&
-            npm start && npm run test:e2e
-          else
-            npm run test:e2e
+            npm start &
+            echo "Waiting for the app to start..."
+            wait-on http://localhost:3000
           fi
+
+      - name: Run Test
+        env:
+          HOST: ${{ secrets.HOST }}
+        run: npm run test:e2e
+        
+      - name: Stop Local App
+        run: kill $(lsof -t -i:3000) || true
